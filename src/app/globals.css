@@ -2,26 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  html {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #2D2D2D;
+    background-color: #FEFCF8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1, h2, h3 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    color: #1A1A1A;
+  }
+
+  a {
+    color: #5C7A57;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: #8FA68B;
+  }
+
+  ::selection {
+    background-color: #D4E2D1;
+    color: #1A1A1A;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-sage text-white font-body font-medium rounded-md transition-all duration-200;
+  }
+  .btn-primary:hover {
+    @apply bg-sage-dark shadow-card -translate-y-0.5;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-sage text-sage-dark font-body font-medium rounded-md transition-all duration-200;
+  }
+  .btn-secondary:hover {
+    @apply bg-sage-light;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 text-charcoal font-body font-medium rounded-md transition-all duration-200;
+  }
+  .btn-ghost:hover {
+    @apply bg-sand;
+  }
+
+  .card {
+    @apply bg-warm-white rounded-lg shadow-card p-6 transition-all duration-200;
+  }
+  .card:hover {
+    @apply shadow-elevated -translate-y-0.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 bg-sage-light text-sage-dark text-xs font-medium rounded-full;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-sand rounded-md bg-warm-white text-charcoal placeholder-stone focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent transition-all duration-200;
+  }
+
+  .section-padding {
+    @apply px-6 py-16 md:px-12 lg:px-20 lg:py-24;
+  }
+
+  .container-narrow {
+    @apply max-w-5xl mx-auto;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto;
   }
 }
