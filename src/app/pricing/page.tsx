@@ -216,7 +216,7 @@ export default function PricingPage() {
               <tbody className="divide-y divide-sand/50">
                 {[
                   ["Monthly Price", "$0", "$9.99/mo", "$29.99/mo", "$4.99 one-time"],
-                  ["Images per month", "3/day (~90/mo)", "100", "500", "50 (never expires)"],
+                  ["Images", "3/day (~90/mo)", "100/mo", "500/mo", "50 (one-time, never expires)"],
                   ["Resolution", "512px", "1024px", "4K", "1024px"],
                   ["Watermark", "Yes", "No", "No", "No"],
                   ["Tattoo Simulator", "✓", "✓", "✓", "✓"],
