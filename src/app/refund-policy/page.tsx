@@ -16,7 +16,7 @@ export default function RefundPolicy() {
         <section>
           <h2 className="font-display text-xl text-ink mb-3">Subscription Plans</h2>
           <p className="text-stone text-sm leading-relaxed">
-            We offer a <strong>7-day full refund</strong> on all paid subscription plans (Pro and Studio). If you are not satisfied within the first 7 days, contact us at support@inkpreview.ai for a full refund — no questions asked.
+            We offer a <strong>7-day full refund</strong> on all paid subscription plans (Pro and Studio). If you are not satisfied within the first 7 days, contact us at support@inkpreview.co for a full refund — no questions asked.
           </p>
           <p className="text-stone text-sm leading-relaxed mt-2">
             After 7 days, monthly subscriptions can be cancelled at any time. You will retain access until the end of your current billing period. No partial refunds for unused portions of monthly billing cycles.
@@ -40,7 +40,7 @@ export default function RefundPolicy() {
         <section>
           <h2 className="font-display text-xl text-ink mb-3">How to Request a Refund</h2>
           <p className="text-stone text-sm leading-relaxed">
-            Contact us at <strong>support@inkpreview.ai</strong> with your account email and reason for the refund. We process refund requests within 3 business days. Refunds are issued to the original payment method via Stripe.
+            Contact us at <strong>support@inkpreview.co</strong> with your account email and reason for the refund. We process refund requests within 3 business days. Refunds are issued to the original payment method via Stripe.
           </p>
         </section>
       </div>

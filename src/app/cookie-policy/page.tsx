@@ -49,7 +49,7 @@ export default function CookiePolicy() {
         <section>
           <h2 className="font-display text-xl text-ink mb-3">Contact</h2>
           <p className="text-stone text-sm leading-relaxed">
-            For cookie-related inquiries, contact us at privacy@inkpreview.ai.
+            For cookie-related inquiries, contact us at privacy@inkpreview.co.
           </p>
         </section>
       </div>

@@ -18,9 +18,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://inkpreview.ai"),
+  metadataBase: new URL("https://inkpreview.co"),
   title: {
-    default: "InkPreview — AI Tattoo Generator | Virtual Tattoo Try On & Stencil Maker",
+    default: "InkPreview — Tattoo Simulator & Try On — Preview Before You Ink | InkPreview",
     template: "%s | InkPreview",
   },
   description:
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "InkPreview",
-    title: "InkPreview — AI Tattoo Generator | Virtual Tattoo Try On & Stencil Maker",
+    title: "InkPreview — Tattoo Simulator & Try On — Preview Before You Ink | InkPreview",
     description:
       "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
   },

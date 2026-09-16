@@ -60,7 +60,7 @@ export default function TermsOfService() {
             You retain ownership of photos you upload. By uploading, you grant InkPreview a limited license to process your images for the purpose of providing our services. You may not upload content that infringes on others&apos; intellectual property rights.
           </p>
           <p className="text-stone text-sm leading-relaxed mt-2">
-            DMCA notices can be sent to dmca@inkpreview.ai.
+            DMCA notices can be sent to dmca@inkpreview.co.
           </p>
         </section>
 

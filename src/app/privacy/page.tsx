@@ -101,7 +101,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-display text-xl text-ink mb-3">9. Contact</h2>
           <p className="text-stone text-sm leading-relaxed">
-            For privacy inquiries, contact us at privacy@inkpreview.ai.
+            For privacy inquiries, contact us at privacy@inkpreview.co.
           </p>
         </section>
       </div>
