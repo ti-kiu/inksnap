@@ -46,13 +46,6 @@ export default function TattooSimulator() {
               </p>
             </div>
 
-            {/* Demo notice */}
-            <div className="bg-sage-light/30 rounded-lg p-4 text-center">
-              <p className="text-sm text-sage-dark font-medium">
-                🎨 Demo Mode — This is a placeholder UI. AI functionality coming soon.
-              </p>
-            </div>
-
             {/* Disclaimer */}
             <div className="bg-terracotta-light/40 rounded-lg p-4 flex gap-3">
               <svg className="w-5 h-5 text-terracotta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">

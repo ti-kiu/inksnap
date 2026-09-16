@@ -41,9 +41,6 @@ export default function StencilGenerator() {
           </div>
           <h3 className="font-display text-xl text-ink mb-2">Upload your image here</h3>
           <p className="text-stone text-sm mb-2">JPG, PNG, HEIC, WEBP, or SVG. Up to 10MB.</p>
-          <div className="bg-sage-light/30 rounded-lg p-3 mt-4 inline-block">
-            <p className="text-sm text-sage-dark font-medium">🎨 Demo Mode — AI functionality coming soon.</p>
-          </div>
         </div>
       </section>
 

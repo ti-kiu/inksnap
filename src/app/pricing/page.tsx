@@ -99,8 +99,25 @@ const faqItems = [
 ];
 
 export default function PricingPage() {
+  const pricingJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    'name': 'InkSnap',
+    'applicationCategory': 'DesignApplication',
+    'offers': [
+      { '@type': 'Offer', 'name': 'Free', 'price': '0', 'priceCurrency': 'USD' },
+      { '@type': 'Offer', 'name': 'Pro', 'price': '9.99', 'priceCurrency': 'USD', 'billingIncrement': 'P1M' },
+      { '@type': 'Offer', 'name': 'Studio', 'price': '29.99', 'priceCurrency': 'USD', 'billingIncrement': 'P1M' },
+      { '@type': 'Offer', 'name': 'Credit Pack', 'price': '4.99', 'priceCurrency': 'USD' }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
+      />
       {/* HERO */}
       <section className="max-w-5xl mx-auto px-6 pt-16 pb-8 md:pt-24 text-center">
         <span className="inline-block px-3 py-1 bg-sage-light text-sage-dark text-xs font-medium rounded-full mb-6">
@@ -193,29 +210,31 @@ export default function PricingPage() {
                   <th className="text-center py-3 px-3 text-stone font-medium">Free</th>
                   <th className="text-center py-3 px-3 text-sage-dark font-medium">Pro</th>
                   <th className="text-center py-3 px-3 text-stone font-medium">Studio</th>
+                  <th className="text-center py-3 px-3 text-stone font-medium">Credit Pack</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-sand/50">
                 {[
-                  ["Monthly Price", "$0", "$9.99/mo", "$29.99/mo"],
-                  ["Images per month", "3/day (~90/mo)", "100", "500"],
-                  ["Resolution", "512px", "1024px", "4K"],
-                  ["Watermark", "Yes", "No", "No"],
-                  ["Tattoo Simulator", "✓", "✓", "✓"],
-                  ["Stencil Generator", "Basic", "Full", "Full + batch"],
-                  ["Cover-up Designer", "Preview only", "Full access", "Full + artist PDF"],
-                  ["Style Library", "20 styles", "All 5,000+", "All 5,000+"],
-                  ["Save & Compare", "5 slots", "Unlimited", "Unlimited"],
-                  ["Batch Mode", "✗", "✗", "✓ (up to 50)"],
-                  ["PDF Export", "✗", "✗", "✓"],
-                  ["Commercial License", "✗", "✗", "✓"],
-                  ["Support", "Community", "Email (48hr)", "Priority (24hr)"],
-                ].map(([feat, free, pro, studio], i) => (
+                  ["Monthly Price", "$0", "$9.99/mo", "$29.99/mo", "$4.99 one-time"],
+                  ["Images per month", "3/day (~90/mo)", "100", "500", "50 (never expires)"],
+                  ["Resolution", "512px", "1024px", "4K", "1024px"],
+                  ["Watermark", "Yes", "No", "No", "No"],
+                  ["Tattoo Simulator", "✓", "✓", "✓", "✓"],
+                  ["Stencil Generator", "Basic", "Full", "Full + batch", "Full"],
+                  ["Cover-up Designer", "Preview only", "Full access", "Full + artist PDF", "Full access"],
+                  ["Style Library", "20 styles", "All 5,000+", "All 5,000+", "All 5,000+"],
+                  ["Save & Compare", "5 slots", "Unlimited", "Unlimited", "30 days"],
+                  ["Batch Mode", "✗", "✗", "✓ (up to 50)", "✗"],
+                  ["PDF Export", "✗", "✗", "✓", "✗"],
+                  ["Commercial License", "✗", "✗", "✓", "✗"],
+                  ["Support", "Community", "Email (48hr)", "Priority (24hr)", "Community"],
+                ].map(([feat, free, pro, studio, credit], i) => (
                   <tr key={i}>
                     <td className="py-3 pr-4 text-charcoal">{feat}</td>
-                    <td className="text-center py-3 px-3 text-stone">{free}</td>
+                    <td className="text-center py-3 px-3 text-charcoal">{free}</td>
                     <td className="text-center py-3 px-3 font-medium">{pro}</td>
-                    <td className="text-center py-3 px-3 text-stone">{studio}</td>
+                    <td className="text-center py-3 px-3 text-charcoal">{studio}</td>
+                    <td className="text-center py-3 px-3 text-charcoal">{credit}</td>
                   </tr>
                 ))}
               </tbody>

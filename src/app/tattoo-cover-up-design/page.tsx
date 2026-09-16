@@ -41,9 +41,6 @@ export default function CoverUpDesign() {
           </div>
           <h3 className="font-display text-xl text-ink mb-2">Upload your current tattoo photo</h3>
           <p className="text-stone text-sm mb-2">Photograph the tattoo you want to cover. Even lighting, no filters.</p>
-          <div className="bg-sage-light/30 rounded-lg p-3 mt-4 inline-block">
-            <p className="text-sm text-sage-dark font-medium">🎨 Demo Mode — AI functionality coming soon.</p>
-          </div>
         </div>
       </section>
 
