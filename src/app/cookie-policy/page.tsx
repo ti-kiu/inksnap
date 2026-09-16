@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
-  description: "Learn about how InkSnap uses cookies and how to manage your preferences.",
+  description: "Learn about how InkPreview uses cookies and how to manage your preferences.",
   robots: { index: false },
 };
 
@@ -49,7 +49,7 @@ export default function CookiePolicy() {
         <section>
           <h2 className="font-display text-xl text-ink mb-3">Contact</h2>
           <p className="text-stone text-sm leading-relaxed">
-            For cookie-related inquiries, contact us at privacy@inksnap.ai.
+            For cookie-related inquiries, contact us at privacy@inkpreview.ai.
           </p>
         </section>
       </div>

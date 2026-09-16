@@ -20,7 +20,7 @@ export default function StencilGenerator() {
           Tattoo Stencil Generator — Any Image to Clean Stencil
         </h1>
         <p className="text-body-lg text-stone max-w-2xl mx-auto mb-8">
-          Upload a photo, drawing, or reference image. InkSnap converts it to a clean, print-ready
+          Upload a photo, drawing, or reference image. InkPreview converts it to a clean, print-ready
           tattoo stencil your artist can work from.
         </p>
         <Link

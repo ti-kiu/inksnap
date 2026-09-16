@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "InkSnap privacy policy. Learn how we collect, use, and protect your data.",
+  description: "InkPreview privacy policy. Learn how we collect, use, and protect your data.",
   robots: { index: false },
 };
 
@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-display text-xl text-ink mb-3">1. Introduction</h2>
           <p className="text-stone text-sm leading-relaxed">
-            InkSnap (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) provides AI-powered tattoo visualization tools. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
+            InkPreview (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) provides AI-powered tattoo visualization tools. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
           </p>
         </section>
 
@@ -101,7 +101,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-display text-xl text-ink mb-3">9. Contact</h2>
           <p className="text-stone text-sm leading-relaxed">
-            For privacy inquiries, contact us at privacy@inksnap.ai.
+            For privacy inquiries, contact us at privacy@inkpreview.ai.
           </p>
         </section>
       </div>

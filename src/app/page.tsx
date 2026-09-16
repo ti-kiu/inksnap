@@ -2,20 +2,20 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "InkSnap — AI Tattoo Generator | Virtual Tattoo Try On & Stencil Maker",
+  title: "InkPreview — AI Tattoo Generator | Virtual Tattoo Try On & Stencil Maker",
   description:
-    "See how a tattoo looks on your body before you commit. InkSnap uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
+    "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
   alternates: { canonical: "/" },
 };
 
 const faqItems = [
   {
     q: "Is this a real tattoo?",
-    a: "No. InkSnap generates a visual preview on your photo. It's a reference tool — not a tattoo service and not medical advice.",
+    a: "No. InkPreview generates a visual preview on your photo. It's a reference tool — not a tattoo service and not medical advice.",
   },
   {
     q: "How accurate is the preview?",
-    a: "InkSnap simulates placement, size, and general appearance. Skin tone, lighting, and body curvature affect results. Always consult a professional tattoo artist before inking.",
+    a: "InkPreview simulates placement, size, and general appearance. Skin tone, lighting, and body curvature affect results. Always consult a professional tattoo artist before inking.",
   },
   {
     q: "Can I use the designs my tattoo artist gives me?",
@@ -26,12 +26,12 @@ const faqItems = [
     a: "Photos are processed in-session and deleted within 24 hours. We do not use your photos for training.",
   },
   {
-    q: "Can I use InkSnap designs commercially?",
+    q: "Can I use InkPreview designs commercially?",
     a: "Studio plan includes a commercial license. Free and Pro plans are for personal use only.",
   },
   {
     q: "What if I want to cover up an existing tattoo?",
-    a: "Use the Cover-up Designer. Upload a photo of your current tattoo and InkSnap suggests designs that work with the existing lines and shading.",
+    a: "Use the Cover-up Designer. Upload a photo of your current tattoo and InkPreview suggests designs that work with the existing lines and shading.",
   },
 ];
 
@@ -67,7 +67,7 @@ export default function LandingPage() {
                 See Your Tattoo Before You Ink It
               </h1>
               <p className="text-body-lg text-stone max-w-lg mb-8">
-                Upload a photo. Pick a design. InkSnap shows exactly how it looks on your skin — in
+                Upload a photo. Pick a design. InkPreview shows exactly how it looks on your skin — in
                 10 seconds.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -188,7 +188,7 @@ export default function LandingPage() {
               </div>
               <h3 className="font-display text-xl text-ink mb-2">3. Preview on Your Skin</h3>
               <p className="text-stone text-sm leading-relaxed">
-                InkSnap maps the design onto your photo. Resize, rotate, try placements.
+                InkPreview maps the design onto your photo. Resize, rotate, try placements.
               </p>
             </div>
           </div>
@@ -215,7 +215,7 @@ export default function LandingPage() {
             {[
               { title: "Tattoo Simulator", desc: "See any design mapped onto your actual body photo. Adjust size, angle, and placement." },
               { title: "Stencil Generator", desc: "Convert any image into a clean tattoo stencil your artist can use. Download as PNG or PDF." },
-              { title: "Cover-up Designer", desc: "Upload your existing tattoo. InkSnap suggests cover-up designs that work with what's already there." },
+              { title: "Cover-up Designer", desc: "Upload your existing tattoo. InkPreview suggests cover-up designs that work with what's already there." },
               { title: "Style Library", desc: "Japanese, geometric, minimalist, realism, watercolor, blackwork — browse or search by keyword." },
               { title: "HD Export", desc: "Free tier: 512px. Pro: 1024px. Studio: 4K with no watermark." },
               { title: "Batch Mode", desc: "Studio plan: generate up to 50 variations in one session. Great for client presentations." },
@@ -298,7 +298,7 @@ export default function LandingPage() {
             href="/tattoo-simulator"
             className="inline-flex items-center justify-center px-8 py-4 bg-sage text-white rounded-md text-lg font-medium hover:bg-sage-dark transition-all hover:shadow-card"
           >
-            Try InkSnap Free
+            Try InkPreview Free
           </Link>
           <p className="text-xs text-stone mt-4">
             AI-generated reference. Consult a professional tattoo artist before inking.

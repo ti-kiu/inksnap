@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ symbol: s
   const data = getSymbolData(symbol);
   return {
     title: `${data.title} Tattoo Meaning — What Does It Symbolize?`,
-    description: `What does a ${data.title.toLowerCase()} tattoo mean? Learn the symbolism, cultural origins, and popular placements. See how it looks on your skin with InkSnap\'s free simulator.`,
+    description: `What does a ${data.title.toLowerCase()} tattoo mean? Learn the symbolism, cultural origins, and popular placements. See how it looks on your skin with InkPreview\'s free simulator.`,
     alternates: { canonical: `/tattoo-meaning/${symbol}` },
   };
 }
@@ -119,7 +119,7 @@ export default async function SymbolMeaningPage({ params }: { params: Promise<{ 
             href="/tattoo-simulator"
             className="inline-flex items-center justify-center px-8 py-4 bg-sage text-white rounded-md text-lg font-medium hover:bg-sage-dark transition-all hover:shadow-card"
           >
-            Try InkSnap Free
+            Try InkPreview Free
           </Link>
           <p className="text-xs text-stone mt-4">AI-generated reference. Consult a professional tattoo artist before inking.</p>
         </div>

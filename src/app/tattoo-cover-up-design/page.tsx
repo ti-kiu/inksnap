@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Tattoo Cover-up Design — Redesign Old Tattoos",
   description:
-    "Upload a photo of your existing tattoo. InkSnap suggests cover-up designs that work with your current ink. See the result before you book.",
+    "Upload a photo of your existing tattoo. InkPreview suggests cover-up designs that work with your current ink. See the result before you book.",
   alternates: { canonical: "/tattoo-cover-up-design" },
 };
 
@@ -20,7 +20,7 @@ export default function CoverUpDesign() {
           Tattoo Cover-up Design — See What&apos;s Possible
         </h1>
         <p className="text-body-lg text-stone max-w-2xl mx-auto mb-8">
-          Upload a photo of the tattoo you want to cover. InkSnap suggests designs that work with the
+          Upload a photo of the tattoo you want to cover. InkPreview suggests designs that work with the
           existing lines, shading, and size.
         </p>
         <Link
@@ -51,9 +51,9 @@ export default function CoverUpDesign() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { step: "1", title: "Upload Your Current Tattoo", desc: "Photograph the tattoo you want to cover. Even lighting, no filters." },
-              { step: "2", title: "AI Analyzes the Existing Ink", desc: "InkSnap reads the line density, shading pattern, size, and color palette of your current tattoo." },
+              { step: "2", title: "AI Analyzes the Existing Ink", desc: "InkPreview reads the line density, shading pattern, size, and color palette of your current tattoo." },
               { step: "3", title: "Get Cover-up Suggestions", desc: "The AI generates 3–10 design options that work with — not against — your existing ink." },
-              { step: "4", title: "Preview on Your Skin", desc: "Pick a suggestion. InkSnap maps it over your existing tattoo on the photo. See the before/after side by side." },
+              { step: "4", title: "Preview on Your Skin", desc: "Pick a suggestion. InkPreview maps it over your existing tattoo on the photo. See the before/after side by side." },
             ].map((s) => (
               <div key={s.step}>
                 <div className="w-10 h-10 mb-4 rounded-full bg-terracotta-light flex items-center justify-center">
@@ -94,7 +94,7 @@ export default function CoverUpDesign() {
       <section className="bg-terracotta-light/30 py-8">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-sm text-charcoal">
-            <strong>Important:</strong> InkSnap designs cover-ups — new ink over old ink. InkSnap does
+            <strong>Important:</strong> InkPreview designs cover-ups — new ink over old ink. InkPreview does
             not remove tattoos. For removal, consult a dermatologist or laser removal specialist.
           </p>
         </div>

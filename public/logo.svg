@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
+  <!-- Ink droplet icon -->
+  <circle cx="24" cy="24" r="18" fill="#8FA68B" opacity="0.15"/>
+  <path d="M24 8C24 8 12 20 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 20 24 8 24 8Z" fill="#8FA68B"/>
+  <!-- Preview eye/scan line -->
+  <path d="M18 26C18 26 21 22 24 22C27 22 30 26 30 26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="24" cy="26" r="2.5" fill="white"/>
+  <!-- Text -->
+  <text x="50" y="32" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#2D2D2D">
+    <tspan>Ink</tspan><tspan fill="#8FA68B">Preview</tspan>
+  </text>
+</svg>

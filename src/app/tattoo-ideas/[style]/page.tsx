@@ -49,7 +49,7 @@ function getStyleData(slug: string) {
   const title = slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
   return {
     title,
-    intro: `${title} tattoos are a popular style choice. Browse our curated gallery of ${title.toLowerCase()} designs and see how they look on your body with InkSnap\'s free simulator.`,
+    intro: `${title} tattoos are a popular style choice. Browse our curated gallery of ${title.toLowerCase()} designs and see how they look on your body with InkPreview\'s free simulator.`,
     placements: ["Forearm", "Shoulder", "Back", "Chest"],
     designs: [
       { name: `${title} Design 1`, placement: "Forearm", desc: `A beautiful ${title.toLowerCase()} design for the forearm.` },
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: { params: Promise<{ style: st
   const data = getStyleData(style);
   return {
     title: `${data.title} Tattoo Ideas — Gallery & Inspiration`,
-    description: `Browse ${data.title.toLowerCase()} tattoo ideas for men and women. See how each design looks on real skin with InkSnap\'s free tattoo simulator. 500+ designs.`,
+    description: `Browse ${data.title.toLowerCase()} tattoo ideas for men and women. See how each design looks on real skin with InkPreview\'s free tattoo simulator. 500+ designs.`,
     alternates: { canonical: `/tattoo-ideas/${style}` },
   };
 }
@@ -125,7 +125,7 @@ export default async function StyleIdeasPage({ params }: { params: Promise<{ sty
           <div className="bg-warm-white rounded-xl p-5 shadow-soft">
             <h3 className="font-display text-lg text-ink mb-2">Try Before You Ink</h3>
             <p className="text-stone text-sm leading-relaxed">
-              Use InkSnap to preview any {data.title.toLowerCase()} design on your actual body photo — free, instant, private.
+              Use InkPreview to preview any {data.title.toLowerCase()} design on your actual body photo — free, instant, private.
             </p>
           </div>
         </div>
@@ -170,7 +170,7 @@ export default async function StyleIdeasPage({ params }: { params: Promise<{ sty
             href="/tattoo-simulator"
             className="inline-flex items-center justify-center px-8 py-4 bg-sage text-white rounded-md text-lg font-medium hover:bg-sage-dark transition-all hover:shadow-card"
           >
-            Try InkSnap&apos;s Tattoo Simulator
+            Try InkPreview&apos;s Tattoo Simulator
           </Link>
           <p className="text-xs text-stone mt-4">AI-generated reference. Consult a professional tattoo artist before inking.</p>
         </div>

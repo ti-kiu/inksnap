@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "InkSnap terms of service. Read our terms before using our AI tattoo visualization tools.",
+  description: "InkPreview terms of service. Read our terms before using our AI tattoo visualization tools.",
   robots: { index: false },
 };
 
@@ -16,17 +16,17 @@ export default function TermsOfService() {
         <section>
           <h2 className="font-display text-xl text-ink mb-3">1. Service Description</h2>
           <p className="text-stone text-sm leading-relaxed">
-            InkSnap provides AI-powered tattoo visualization tools including a tattoo simulator, stencil generator, and cover-up designer. Our tools generate visual previews for reference purposes only.
+            InkPreview provides AI-powered tattoo visualization tools including a tattoo simulator, stencil generator, and cover-up designer. Our tools generate visual previews for reference purposes only.
           </p>
           <p className="text-stone text-sm leading-relaxed mt-2">
-            <strong>Disclaimer:</strong> InkSnap provides AI-generated visual previews for reference only. Results may vary from actual tattoos. InkSnap does not provide tattooing services, medical advice, or professional design services. Always consult a licensed tattoo artist for final designs and application.
+            <strong>Disclaimer:</strong> InkPreview provides AI-generated visual previews for reference only. Results may vary from actual tattoos. InkPreview does not provide tattooing services, medical advice, or professional design services. Always consult a licensed tattoo artist for final designs and application.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl text-ink mb-3">2. Eligibility</h2>
           <p className="text-stone text-sm leading-relaxed">
-            You must be at least 13 years old to use InkSnap. If you are under 18, you must have parental consent. You must be 18+ to purchase any paid plan.
+            You must be at least 13 years old to use InkPreview. If you are under 18, you must have parental consent. You must be 18+ to purchase any paid plan.
           </p>
         </section>
 
@@ -57,10 +57,10 @@ export default function TermsOfService() {
         <section>
           <h2 className="font-display text-xl text-ink mb-3">6. User Content</h2>
           <p className="text-stone text-sm leading-relaxed">
-            You retain ownership of photos you upload. By uploading, you grant InkSnap a limited license to process your images for the purpose of providing our services. You may not upload content that infringes on others&apos; intellectual property rights.
+            You retain ownership of photos you upload. By uploading, you grant InkPreview a limited license to process your images for the purpose of providing our services. You may not upload content that infringes on others&apos; intellectual property rights.
           </p>
           <p className="text-stone text-sm leading-relaxed mt-2">
-            DMCA notices can be sent to dmca@inksnap.ai.
+            DMCA notices can be sent to dmca@inkpreview.ai.
           </p>
         </section>
 
@@ -84,14 +84,14 @@ export default function TermsOfService() {
         <section>
           <h2 className="font-display text-xl text-ink mb-3">9. Limitation of Liability</h2>
           <p className="text-stone text-sm leading-relaxed">
-            InkSnap is provided &quot;as is&quot; without warranties. We are not liable for any decisions made based on AI-generated previews, including tattoo application decisions. Always consult a professional.
+            InkPreview is provided &quot;as is&quot; without warranties. We are not liable for any decisions made based on AI-generated previews, including tattoo application decisions. Always consult a professional.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl text-ink mb-3">10. Changes</h2>
           <p className="text-stone text-sm leading-relaxed">
-            We may update these terms from time to time. Continued use of InkSnap after changes constitutes acceptance of the new terms.
+            We may update these terms from time to time. Continued use of InkPreview after changes constitutes acceptance of the new terms.
           </p>
         </section>
       </div>

@@ -8,7 +8,7 @@ const styles = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://inksnap.ai";
+  const baseUrl = "https://inkpreview.ai";
 
   const staticPages = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1.0 },

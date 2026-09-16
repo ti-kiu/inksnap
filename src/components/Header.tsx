@@ -9,8 +9,8 @@ export default function Header() {
   return (
     <nav className="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-sand/50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="font-display text-2xl text-ink">
-          InkSnap
+        <Link href="/" className="flex items-center gap-2">
+          <img src="/logo.svg" alt="InkPreview" className="h-8 w-auto" />
         </Link>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           <Link href="/tattoo-simulator" className="text-stone hover:text-charcoal transition">

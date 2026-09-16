@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "InkSnap Pricing — Free, Pro & Studio Plans",
+  title: "InkPreview Pricing — Free, Pro & Studio Plans",
   description:
-    "InkSnap pricing: Free plan with 3 daily images. Pro at $9.99/mo for 100 images. Studio at $29.99/mo for 4K, batch mode, and commercial license. Compare plans.",
+    "InkPreview pricing: Free plan with 3 daily images. Pro at $9.99/mo for 100 images. Studio at $29.99/mo for 4K, batch mode, and commercial license. Compare plans.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -102,7 +102,7 @@ export default function PricingPage() {
   const pricingJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    'name': 'InkSnap',
+    'name': 'InkPreview',
     'applicationCategory': 'DesignApplication',
     'offers': [
       { '@type': 'Offer', 'name': 'Free', 'price': '0', 'priceCurrency': 'USD' },

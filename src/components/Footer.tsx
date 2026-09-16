@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="border-t border-sand py-12">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <span className="font-display text-xl text-ink">InkSnap</span>
+          <span className="font-display text-xl text-ink">InkPreview</span>
           <p className="text-sm text-stone mt-1">
             AI tattoo visualization. Not a substitute for professional advice.
           </p>
@@ -33,8 +33,8 @@ export default function Footer() {
       </div>
       <div className="max-w-7xl mx-auto px-6 mt-6 pt-6 border-t border-sand">
         <p className="text-xs text-stone leading-relaxed">
-          Disclaimer: InkSnap provides AI-generated visual previews for reference only. Results may
-          vary from actual tattoos. InkSnap does not provide tattooing services, medical advice, or
+          Disclaimer: InkPreview provides AI-generated visual previews for reference only. Results may
+          vary from actual tattoos. InkPreview does not provide tattooing services, medical advice, or
           professional design services. Always consult a licensed tattoo artist for final designs and
           application. You must be 18+ to use this service (or the age of majority in your
           jurisdiction).

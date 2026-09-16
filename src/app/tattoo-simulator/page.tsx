@@ -20,7 +20,7 @@ export default function TattooSimulator() {
           Tattoo Simulator — See It On Your Skin
         </h1>
         <p className="text-stone max-w-xl mx-auto">
-          Upload a photo of any body area. Pick a design or describe one. InkSnap maps it onto your
+          Upload a photo of any body area. Pick a design or describe one. InkPreview maps it onto your
           skin in under 10 seconds.
         </p>
       </section>

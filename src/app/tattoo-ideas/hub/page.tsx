@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Tattoo Ideas — 10,000+ AI Designs by Style, Meaning & Placement",
   description:
-    "Browse tattoo ideas by style, meaning, and placement. See how each design looks on your body with InkSnap\'s free tattoo simulator.",
+    "Browse tattoo ideas by style, meaning, and placement. See how each design looks on your body with InkPreview\'s free tattoo simulator.",
   alternates: { canonical: "/tattoo-ideas/hub" },
 };
 
@@ -44,7 +44,7 @@ export default function IdeasHub() {
         </h1>
         <p className="text-body-lg text-stone max-w-2xl mx-auto">
           Explore 5,000+ tattoo designs across 20+ styles. Pick one. See how it looks on your body
-          with InkSnap&apos;s free tattoo simulator.
+          with InkPreview&apos;s free tattoo simulator.
         </p>
       </section>
 
@@ -76,7 +76,7 @@ export default function IdeasHub() {
             href="/tattoo-simulator"
             className="inline-flex items-center justify-center px-8 py-4 bg-sage text-white rounded-md text-lg font-medium hover:bg-sage-dark transition-all hover:shadow-card"
           >
-            Try InkSnap&apos;s Tattoo Simulator
+            Try InkPreview&apos;s Tattoo Simulator
           </Link>
           <p className="text-xs text-stone mt-4">AI-generated reference. Consult a professional tattoo artist before inking.</p>
         </div>

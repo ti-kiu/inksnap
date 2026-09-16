@@ -18,20 +18,20 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://inksnap.ai"),
+  metadataBase: new URL("https://inkpreview.ai"),
   title: {
-    default: "InkSnap — AI Tattoo Generator | Virtual Tattoo Try On & Stencil Maker",
-    template: "%s | InkSnap",
+    default: "InkPreview — AI Tattoo Generator | Virtual Tattoo Try On & Stencil Maker",
+    template: "%s | InkPreview",
   },
   description:
-    "See how a tattoo looks on your body before you commit. InkSnap uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
+    "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "InkSnap",
-    title: "InkSnap — AI Tattoo Generator | Virtual Tattoo Try On & Stencil Maker",
+    siteName: "InkPreview",
+    title: "InkPreview — AI Tattoo Generator | Virtual Tattoo Try On & Stencil Maker",
     description:
-      "See how a tattoo looks on your body before you commit. InkSnap uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
+      "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
   },
   robots: {
     index: true,
