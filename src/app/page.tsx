@@ -95,6 +95,13 @@ export default function LandingPage() {
               <p className="text-sm text-stone mt-6">
                 Free to try · No sign-up needed · AI-powered preview
               </p>
+              <p className="text-xs text-stone/70 mt-3 leading-relaxed max-w-md">
+                InkPreview is a free AI tattoo simulator that helps you visualize tattoo designs on your
+                body before committing. Whether you&apos;re considering a small minimalist tattoo on your
+                wrist, a full sleeve design, or a meaningful cover-up for an existing tattoo, our AI
+                engine generates realistic previews in seconds. Used by over 10,000 tattoo enthusiasts
+                worldwide.
+              </p>
             </div>
             <div className="relative">
               <div className="bg-warm-white rounded-xl shadow-card p-4 md:p-6">
@@ -221,18 +228,76 @@ export default function LandingPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Tattoo Simulator", desc: "See any design mapped onto your actual body photo. Adjust size, angle, and placement." },
-              { title: "Stencil Generator", desc: "Convert any image into a clean tattoo stencil your artist can use. Download as PNG or PDF." },
-              { title: "Cover-up Designer", desc: "Upload your existing tattoo. InkPreview suggests cover-up designs that work with what's already there." },
-              { title: "Style Library", desc: "Japanese, geometric, minimalist, realism, watercolor, blackwork — browse or search by keyword." },
-              { title: "HD Export", desc: "Free tier: 512px. Pro: 1024px. Studio: 4K with no watermark." },
-              { title: "Batch Mode", desc: "Studio plan: generate up to 50 variations in one session. Great for client presentations." },
+              { title: "Tattoo Simulator", desc: "See any design mapped onto your actual body photo. Adjust size, angle, and placement. Our AI analyzes your skin tone, body curves, and lighting to produce a realistic tattoo preview that looks like the real thing. Perfect for trying placement ideas on your forearm, shoulder, back, chest, or wrist before visiting a tattoo artist.", icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" },
+              { title: "Stencil Generator", desc: "Convert any image into a clean tattoo stencil your artist can use. Download as PNG. Uses edge detection and threshold controls to extract crisp outlines from photos, illustrations, or AI-generated designs. Tattoo artists love this tool for quick client consultations — upload a reference image and get a transfer-ready stencil in seconds.", icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" },
+              { title: "Cover-up Designer", desc: "Upload your existing tattoo. InkPreview suggests cover-up designs that work with the existing lines and shading. A great option if you have an old tattoo you regret or want to refresh. Our AI considers the size, darkness, and style of your current ink to recommend designs that naturally blend with or conceal the original artwork.", icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" },
+              { title: "Style Library", desc: "Japanese irezumi, geometric patterns, minimalist fine line, photorealism, watercolor splashes, blackwork, tribal, neo-traditional — browse hundreds of styles or search by keyword. Each style comes with cultural context and placement suggestions so you can choose a design that matches your personality and body area.", icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" },
+              { title: "HD Export", desc: "Free tier: 512px. Pro: 1024px. Studio: 4K with no watermark. Download high-resolution previews to show your tattoo artist exactly what you want. Save time during consultations by bringing a visual reference instead of trying to describe your dream tattoo with words alone.", icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" },
+              { title: "Batch Mode", desc: "Studio plan: generate up to 50 variations in one session. Great for client presentations and tattoo studio workflows. Compare multiple design options side by side, adjust placements, and export a full mood board for your next tattoo appointment. Ideal for professional tattoo artists who want to offer clients a visual preview service.", icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" },
             ].map((f, i) => (
               <div key={i} className="bg-warm-white rounded-xl p-6 shadow-soft hover:shadow-card transition-all hover:-translate-y-0.5">
+                <div className="w-10 h-10 mb-3 rounded-lg bg-sage-light flex items-center justify-center">
+                  <svg className="w-5 h-5 text-sage" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path d={f.icon} />
+                  </svg>
+                </div>
                 <h3 className="font-display text-lg text-ink mb-2">{f.title}</h3>
                 <p className="text-stone text-sm leading-relaxed">{f.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT / SEO CONTENT */}
+      <section className="section-padding py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div>
+              <h2 className="font-display text-2xl text-ink mb-4">Who Uses InkPreview?</h2>
+              <p className="text-stone text-sm leading-relaxed mb-4">
+                InkPreview serves a diverse community of tattoo enthusiasts, first-timers, and professional
+                tattoo artists across the globe. Whether you&apos;re planning your first small tattoo or
+                designing a full Japanese-style sleeve, our AI-powered platform helps you make confident
+                decisions about body art.
+              </p>
+              <p className="text-stone text-sm leading-relaxed mb-4">
+                <strong className="text-charcoal">First-time tattoo clients</strong> use InkPreview to overcome
+                hesitation. Seeing a realistic preview of a butterfly tattoo on their wrist or a rose design
+                on their shoulder removes the fear of the unknown. You can experiment with dozens of designs
+                in a single session without any commitment.
+              </p>
+              <p className="text-stone text-sm leading-relaxed mb-4">
+                <strong className="text-charcoal">Tattoo collectors</strong> who already have multiple tattoos
+                use the simulator to plan their next piece. They test how a new geometric design flows with
+                existing ink, or how a cover-up might look over an old tattoo. The batch mode in our Studio
+                plan lets you compare 50 variations side by side.
+              </p>
+              <p className="text-stone text-sm leading-relaxed">
+                <strong className="text-charcoal">Professional tattoo artists</strong> leverage the stencil
+                generator to speed up consultations. Instead of spending 30 minutes sketching a rough outline,
+                they upload a client&apos;s reference image and get a clean stencil in seconds. The simulator
+                also helps artists show clients realistic placement options during the booking process.
+              </p>
+            </div>
+            <div>
+              <h2 className="font-display text-2xl text-ink mb-4">Popular Tattoo Scenarios</h2>
+              <div className="space-y-4">
+                {[
+                  { title: "Small minimalist tattoo", desc: "Fine line designs for wrist, finger, behind the ear, or ankle. Subtle and elegant." },
+                  { title: "Full sleeve design", desc: "Plan a cohesive arm sleeve with Japanese, tribal, or custom themes flowing from shoulder to wrist." },
+                  { title: "Meaningful memorial tattoo", desc: "Honor loved ones with portraits, dates, or symbolic designs like infinity knots and birds." },
+                  { title: "Cover-up for old ink", desc: "Transform faded or unwanted tattoos into fresh artwork that works with existing lines." },
+                  { title: "Matching couples tattoo", desc: "Preview complementary designs on both partners before your anniversary or wedding." },
+                  { title: "First tattoo experiment", desc: "Not sure about placement? Try multiple body areas to find the perfect spot." },
+                ].map((s, i) => (
+                  <div key={i} className="bg-warm-white rounded-lg p-4 border border-sand">
+                    <h3 className="font-medium text-charcoal text-sm mb-1">{s.title}</h3>
+                    <p className="text-stone text-xs leading-relaxed">{s.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
