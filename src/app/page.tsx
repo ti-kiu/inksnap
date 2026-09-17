@@ -5,7 +5,15 @@ export const metadata: Metadata = {
   title: "InkPreview — Tattoo Simulator & Try On | Preview Before You Ink",
   description:
     "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en': 'https://inkpreview.co',
+      'pt': 'https://inkpreview.co/pt',
+      'de': 'https://inkpreview.co/de',
+      'it': 'https://inkpreview.co/it',
+    },
+  },
 };
 
 const faqItems = [
