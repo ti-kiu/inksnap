@@ -1,11 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const styles = [
-  "geometric", "japanese", "minimalist", "realism", "watercolor",
-  "blackwork", "neo-traditional", "dotwork", "fineline", "tribal",
-  "old-school", "new-school", "abstract", "biomechanical", "mandala",
-  "floral", "animal", "skull", "butterfly", "rose", "dragon", "lion", "phoenix",
-];
+import pages from "@/data/pseo-pages.json";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://inkpreview.co";
@@ -16,15 +10,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/tattoo-stencil-generator`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${baseUrl}/tattoo-cover-up-design`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${baseUrl}/pricing`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${baseUrl}/tattoo-ideas/hub`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7 },
+    { url: `${baseUrl}/tattoo-ideas`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
   ];
 
-  const stylePages = styles.map((style) => ({
-    url: `${baseUrl}/tattoo-ideas/${style}`,
+  const pseoPages = pages.map((p) => ({
+    url: `${baseUrl}/tattoo-ideas/${p.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
 
-  return [...staticPages, ...stylePages];
+  return [...staticPages, ...pseoPages];
 }
