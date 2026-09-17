@@ -25,8 +25,9 @@ export default function SimulatorTool() {
 
   // Tattoo overlay state
   const [overlayPos, setOverlayPos] = useState({ x: 50, y: 50 });
-  const [overlaySize, setOverlaySize] = useState(150); // px
-  const [overlayOpacity, setOverlayOpacity] = useState(0.7);
+  const [overlaySize, setOverlaySize] = useState(200); // px
+  const [overlayOpacity, setOverlayOpacity] = useState(0.9);
+  const [blendMode, setBlendMode] = useState<string>('multiply');
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
@@ -118,6 +119,53 @@ export default function SimulatorTool() {
     setOverlaySize(prev => Math.max(50, Math.min(400, prev - e.deltaY * 0.5)));
   }, []);
 
+  // Download composite image
+  const handleDownload = useCallback(() => {
+    if (!uploadPreview || !resultUrl) return;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const bg = new Image();
+    bg.crossOrigin = 'anonymous';
+    bg.onload = () => {
+      canvas.width = bg.naturalWidth;
+      canvas.height = bg.naturalHeight;
+      ctx.drawImage(bg, 0, 0);
+
+      const overlay = new Image();
+      overlay.crossOrigin = 'anonymous';
+      overlay.onload = () => {
+        // Calculate overlay position relative to actual image size
+        const containerEl = containerRef.current;
+        const displayImg = containerEl?.querySelector('img');
+        if (!displayImg) return;
+        const scaleX = bg.naturalWidth / displayImg.clientWidth;
+        const scaleY = bg.naturalHeight / displayImg.clientHeight;
+        const x = overlayPos.x * scaleX;
+        const y = overlayPos.y * scaleY;
+        const w = overlaySize * scaleX;
+        const h = overlaySize * scaleY;
+
+        ctx.globalAlpha = overlayOpacity;
+        ctx.drawImage(overlay, x, y, w, h);
+        ctx.globalAlpha = 1;
+
+        canvas.toBlob((blob) => {
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `inkpreview-${Date.now()}.png`;
+          a.click();
+          URL.revokeObjectURL(url);
+        }, 'image/png');
+      };
+      overlay.src = resultUrl;
+    };
+    bg.src = uploadPreview;
+  }, [uploadPreview, resultUrl, overlayPos, overlaySize, overlayOpacity]);
+
   // Touch handlers for mobile
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     const touch = e.touches[0];
@@ -171,7 +219,7 @@ export default function SimulatorTool() {
                       width: overlaySize,
                       height: overlaySize,
                       opacity: overlayOpacity,
-                      mixBlendMode: 'multiply',
+                      mixBlendMode: blendMode as React.CSSProperties['mixBlendMode'],
                     }}
                     onMouseDown={handleMouseDown}
                     onTouchStart={handleTouchStart}
@@ -186,9 +234,9 @@ export default function SimulatorTool() {
                     />
                   </div>
                 )}
-                {/* Controls hint */}
+                {/* Controls hint - hidden on mobile, shown on hover */}
                 {resultUrl && (
-                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full">
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full opacity-0 hover:opacity-100 transition-opacity pointer-events-none">
                     拖拽移动 · 滚轮缩放 · 右侧调透明度
                   </div>
                 )}
@@ -344,11 +392,43 @@ export default function SimulatorTool() {
                     className="w-full accent-sage"
                   />
                 </div>
+                <div>
+                  <label className="text-sm text-charcoal mb-2 block">混合模式</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { value: 'normal', label: '正常' },
+                      { value: 'multiply', label: '正片叠底' },
+                      { value: 'overlay', label: '叠加' },
+                      { value: 'screen', label: '滤色' },
+                    ].map((m) => (
+                      <button
+                        key={m.value}
+                        onClick={() => setBlendMode(m.value)}
+                        className={`text-xs rounded-md py-1.5 transition ${
+                          blendMode === m.value
+                            ? 'bg-sage text-white'
+                            : 'bg-cream text-stone hover:bg-sage-light'
+                        }`}
+                      >
+                        {m.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
                 <button
                   onClick={() => setOverlayPos({ x: 50, y: 50 })}
                   className="w-full text-sm text-sage border border-sage rounded-md py-1.5 hover:bg-sage-light transition"
                 >
                   重置位置
+                </button>
+                <button
+                  onClick={handleDownload}
+                  className="w-full text-sm text-white bg-sage rounded-md py-2 hover:bg-sage-dark transition flex items-center justify-center gap-2"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                  </svg>
+                  下载预览图
                 </button>
               </div>
             </div>

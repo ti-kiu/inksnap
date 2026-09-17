@@ -1,4 +1,4 @@
-const API_BASE = 'https://inkpreview-api.fuyuanzeng520.workers.dev';
+const API_BASE = 'https://api.inkpreview.co';
 
 interface ApiOptions {
   method?: string;
