@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -20,22 +21,20 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://inkpreview.co"),
   title: {
-    default: "InkPreview — Tattoo Simulator & Try On — Preview Before You Ink | InkPreview",
+    default: "InkPreview — Tattoo Simulator & Try On | InkPreview",
     template: "%s | InkPreview",
   },
   description:
     "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
+  verification: {
+    google: "i7fPIZZ9FlnioMl6eaSWYwFFZgYeQzEQ993B7qfqi38",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "InkPreview",
-    title: "InkPreview — Tattoo Simulator & Try On — Preview Before You Ink | InkPreview",
-    description:
-      "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
-  },
-  robots: {
-    index: true,
-    follow: true,
+    title: "InkPreview — Tattoo Simulator & Try On",
+    description: "See how a tattoo looks on your body before you commit. Try it free.",
   },
 };
 
@@ -46,6 +45,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${dmSerif.variable} ${dmSans.variable} scroll-smooth`}>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-VNPRS6PVD5"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-VNPRS6PVD5');
+          `}
+        </Script>
+      </head>
       <body className="bg-cream text-charcoal min-h-screen">
         <Header />
         <main>{children}</main>
