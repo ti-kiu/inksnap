@@ -23,6 +23,14 @@ export default function SimulatorTool() {
   const [uploadPreview, setUploadPreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Tattoo overlay state
+  const [overlayPos, setOverlayPos] = useState({ x: 50, y: 50 });
+  const [overlaySize, setOverlaySize] = useState(150); // px
+  const [overlayOpacity, setOverlayOpacity] = useState(0.7);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
   // Initialize auth + usage on mount
   useEffect(() => {
     (async () => {
@@ -37,7 +45,7 @@ export default function SimulatorTool() {
     })();
   }, []);
 
-  // Handle photo upload (preview only for now)
+  // Handle photo upload
   const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -85,6 +93,47 @@ export default function SimulatorTool() {
     }
   }, [token, prompt, style, placement, usage]);
 
+  // Drag handlers for tattoo overlay
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+    setDragStart({ x: e.clientX - overlayPos.x, y: e.clientY - overlayPos.y });
+  }, [overlayPos]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging) return;
+    setOverlayPos({
+      x: e.clientX - dragStart.x,
+      y: e.clientY - dragStart.y,
+    });
+  }, [isDragging, dragStart]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  // Scroll to resize overlay
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    e.preventDefault();
+    setOverlaySize(prev => Math.max(50, Math.min(400, prev - e.deltaY * 0.5)));
+  }, []);
+
+  // Touch handlers for mobile
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    setIsDragging(true);
+    setDragStart({ x: touch.clientX - overlayPos.x, y: touch.clientY - overlayPos.y });
+  }, [overlayPos]);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    setOverlayPos({
+      x: touch.clientX - dragStart.x,
+      y: touch.clientY - dragStart.y,
+    });
+  }, [isDragging, dragStart]);
+
   const usagePercent = usage ? ((usage.limit - usage.used) / usage.limit) * 100 : 100;
 
   return (
@@ -92,10 +141,15 @@ export default function SimulatorTool() {
       <div className="grid lg:grid-cols-[1fr_340px] gap-8">
         {/* MAIN PREVIEW AREA */}
         <div className="space-y-6">
-          {/* Upload Zone */}
+          {/* Upload Zone / Preview with Overlay */}
           <div
+            ref={containerRef}
             className="bg-warm-white rounded-xl border-2 border-dashed border-sand hover:border-sage transition-colors cursor-pointer p-8 md:p-16 text-center relative overflow-hidden"
-            onClick={() => fileInputRef.current?.click()}
+            onClick={() => !uploadPreview && fileInputRef.current?.click()}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onWheel={handleWheel}
           >
             <input
               ref={fileInputRef}
@@ -105,7 +159,40 @@ export default function SimulatorTool() {
               onChange={handleFileChange}
             />
             {uploadPreview ? (
-              <img src={uploadPreview} alt="Your photo" className="max-h-96 mx-auto rounded-lg" />
+              <div className="relative inline-block">
+                <img src={uploadPreview} alt="Your photo" className="max-h-96 mx-auto rounded-lg select-none" draggable={false} />
+                {/* Tattoo Overlay */}
+                {resultUrl && (
+                  <div
+                    className="absolute cursor-move select-none"
+                    style={{
+                      left: overlayPos.x,
+                      top: overlayPos.y,
+                      width: overlaySize,
+                      height: overlaySize,
+                      opacity: overlayOpacity,
+                      mixBlendMode: 'multiply',
+                    }}
+                    onMouseDown={handleMouseDown}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={() => setIsDragging(false)}
+                  >
+                    <img
+                      src={resultUrl}
+                      alt="Tattoo overlay"
+                      className="w-full h-full object-contain pointer-events-none"
+                      draggable={false}
+                    />
+                  </div>
+                )}
+                {/* Controls hint */}
+                {resultUrl && (
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full">
+                    拖拽移动 · 滚轮缩放 · 右侧调透明度
+                  </div>
+                )}
+              </div>
             ) : (
               <>
                 <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-sage-light flex items-center justify-center">
@@ -120,14 +207,11 @@ export default function SimulatorTool() {
             )}
           </div>
 
-          {/* Generated Result */}
-          {resultUrl && (
+          {/* Generated Design (standalone) */}
+          {resultUrl && !uploadPreview && (
             <div className="bg-warm-white rounded-xl p-6 shadow-soft">
               <h3 className="font-display text-lg text-ink mb-4">Your Preview</h3>
               <img src={resultUrl} alt="AI generated tattoo preview" className="w-full rounded-lg" />
-              <p className="text-xs text-stone mt-3">
-                AI-generated reference. Consult a professional tattoo artist before inking.
-              </p>
             </div>
           )}
 
@@ -224,6 +308,51 @@ export default function SimulatorTool() {
               <option>Neck</option>
             </select>
           </div>
+
+          {/* Overlay Controls (when tattoo is generated and photo uploaded) */}
+          {resultUrl && uploadPreview && (
+            <div className="bg-warm-white rounded-xl p-5 shadow-soft">
+              <h3 className="font-display text-lg text-ink mb-3">Adjust Overlay</h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="text-sm text-charcoal flex justify-between mb-1">
+                    <span>透明度</span>
+                    <span className="text-stone">{Math.round(overlayOpacity * 100)}%</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="0.1"
+                    max="1"
+                    step="0.05"
+                    value={overlayOpacity}
+                    onChange={(e) => setOverlayOpacity(parseFloat(e.target.value))}
+                    className="w-full accent-sage"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm text-charcoal flex justify-between mb-1">
+                    <span>大小</span>
+                    <span className="text-stone">{overlaySize}px</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="50"
+                    max="400"
+                    step="10"
+                    value={overlaySize}
+                    onChange={(e) => setOverlaySize(parseInt(e.target.value))}
+                    className="w-full accent-sage"
+                  />
+                </div>
+                <button
+                  onClick={() => setOverlayPos({ x: 50, y: 50 })}
+                  className="w-full text-sm text-sage border border-sage rounded-md py-1.5 hover:bg-sage-light transition"
+                >
+                  重置位置
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Usage */}
           <div className="bg-sage-light/30 rounded-xl p-5 border border-sage-light">
