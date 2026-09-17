@@ -22,7 +22,10 @@ export default function Header() {
           <Link href="/pricing" className="text-stone hover:text-charcoal transition">
             Pricing
           </Link>
-          <Link href="/tattoo-ideas/hub" className="text-stone hover:text-charcoal transition">
+          <Link href="/gallery" className="text-stone hover:text-charcoal transition">
+            Gallery
+          </Link>
+          <Link href="/tattoo-ideas" className="text-stone hover:text-charcoal transition">
             Ideas
           </Link>
           <Link
@@ -55,7 +58,10 @@ export default function Header() {
           <Link href="/pricing" className="block text-charcoal font-medium" onClick={() => setOpen(false)}>
             Pricing
           </Link>
-          <Link href="/tattoo-ideas/hub" className="block text-charcoal font-medium" onClick={() => setOpen(false)}>
+          <Link href="/gallery" className="block text-charcoal font-medium" onClick={() => setOpen(false)}>
+            Gallery
+          </Link>
+          <Link href="/tattoo-ideas" className="block text-charcoal font-medium" onClick={() => setOpen(false)}>
             Ideas
           </Link>
           <Link
