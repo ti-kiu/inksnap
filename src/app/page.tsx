@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "InkPreview — Tattoo Simulator & Try On | Preview Before You Ink",
   description:
     "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
   alternates: {

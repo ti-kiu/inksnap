@@ -21,11 +21,11 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://inkpreview.co"),
   title: {
-    default: "InkPreview — Tattoo Simulator & Try On | Preview Before You Ink",
+    default: "InkPreview — Tattoo Simulator & Try On | InkPreview",
     template: "%s | InkPreview",
   },
   description:
-    "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
+    "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo and generate stencils. Try free.",
   verification: {
     google: "i7fPIZZ9FlnioMl6eaSWYwFFZgYeQzEQ993B7qfqi38",
     other: { "msvalidate.01": "8D5AE51845CFE08F58F54A68CFF76D57" },

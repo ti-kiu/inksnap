@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tattoo Cover-up Design — Redesign Old Tattoos",
+  title: "Tattoo Cover-up Design — Redesign Old Tattoos | InkPreview",
   description:
     "Upload a photo of your existing tattoo. InkPreview suggests cover-up designs that work with your current ink. See the result before you book.",
   alternates: { canonical: "/tattoo-cover-up-design" },
