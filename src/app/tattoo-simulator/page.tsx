@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import SimulatorTool from "@/components/SimulatorTool";
 
 export const metadata: Metadata = {
   title: "Tattoo Simulator — Virtual Tattoo Try On",
@@ -25,109 +26,8 @@ export default function TattooSimulator() {
         </p>
       </section>
 
-      {/* TOOL AREA */}
-      <section className="max-w-7xl mx-auto px-6 pb-12">
-        <div className="grid lg:grid-cols-[1fr_340px] gap-8">
-          {/* MAIN PREVIEW AREA */}
-          <div className="space-y-6">
-            {/* Upload Zone */}
-            <div className="bg-warm-white rounded-xl border-2 border-dashed border-sand hover:border-sage transition-colors cursor-pointer p-8 md:p-16 text-center">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-sage-light flex items-center justify-center">
-                <svg className="w-10 h-10 text-sage" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                  <path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-                </svg>
-              </div>
-              <h3 className="font-display text-xl text-ink mb-2">Drop your photo here</h3>
-              <p className="text-stone text-sm mb-2">
-                Drag and drop or click to upload. JPG, PNG, HEIC up to 10MB.
-              </p>
-              <p className="text-xs text-terracotta font-medium">
-                Avoid including your face for privacy.
-              </p>
-            </div>
-
-            {/* Disclaimer */}
-            <div className="bg-terracotta-light/40 rounded-lg p-4 flex gap-3">
-              <svg className="w-5 h-5 text-terracotta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                <path d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-              </svg>
-              <p className="text-xs text-terracotta leading-relaxed">
-                <strong>AI-generated reference.</strong> Consult a professional tattoo artist before
-                inking. AI previews are approximations. Actual results depend on your artist&apos;s
-                technique, ink, skin type, and placement.
-              </p>
-            </div>
-          </div>
-
-          {/* SIDEBAR CONTROLS */}
-          <aside className="space-y-6">
-            {/* Style Selection */}
-            <div className="bg-warm-white rounded-xl p-5 shadow-soft">
-              <h3 className="font-display text-lg text-ink mb-4">Choose a style</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {["Traditional", "Japanese", "Geometric", "Minimalist", "Watercolor", "Realism"].map(
-                  (style) => (
-                    <button
-                      key={style}
-                      className="bg-cream rounded-lg p-3 text-center hover:bg-sage-light transition group"
-                    >
-                      <span className="text-xs text-stone group-hover:text-sage-dark">{style}</span>
-                    </button>
-                  )
-                )}
-              </div>
-            </div>
-
-            {/* Describe Your Tattoo */}
-            <div className="bg-warm-white rounded-xl p-5 shadow-soft">
-              <h3 className="font-display text-lg text-ink mb-3">Describe your tattoo</h3>
-              <textarea
-                className="w-full px-3 py-2.5 border border-sand rounded-md bg-cream text-charcoal text-sm placeholder-stone focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent resize-none"
-                rows={3}
-                placeholder="e.g. A small wolf howling at the moon, fine line style"
-              />
-              <button className="w-full mt-3 inline-flex items-center justify-center px-4 py-2.5 bg-sage text-white rounded-md text-sm font-medium hover:bg-sage-dark transition">
-                Generate Preview
-              </button>
-            </div>
-
-            {/* Placement */}
-            <div className="bg-warm-white rounded-xl p-5 shadow-soft">
-              <h3 className="font-display text-lg text-ink mb-3">Placement</h3>
-              <select className="w-full px-3 py-2.5 border border-sand rounded-md bg-cream text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent">
-                <option>Auto-detect</option>
-                <option>Upper arm</option>
-                <option>Forearm</option>
-                <option>Shoulder</option>
-                <option>Back</option>
-                <option>Chest</option>
-                <option>Leg</option>
-                <option>Ankle</option>
-                <option>Wrist</option>
-                <option>Neck</option>
-              </select>
-            </div>
-
-            {/* Usage */}
-            <div className="bg-sage-light/30 rounded-xl p-5 border border-sage-light">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-charcoal font-medium">Free uses remaining</span>
-                <span className="badge">3 / 3</span>
-              </div>
-              <div className="w-full bg-sand rounded-full h-2">
-                <div className="bg-sage h-2 rounded-full" style={{ width: "100%" }} />
-              </div>
-              <p className="text-xs text-stone mt-2">
-                Need more?{" "}
-                <Link href="/pricing" className="text-sage-dark underline">
-                  Upgrade to Pro
-                </Link>{" "}
-                for 100 images/month.
-              </p>
-            </div>
-          </aside>
-        </div>
-      </section>
+      {/* INTERACTIVE TOOL */}
+      <SimulatorTool />
 
       {/* HOW THE SIMULATOR WORKS */}
       <section className="bg-warm-white py-16 md:py-20">
