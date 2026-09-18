@@ -317,12 +317,12 @@ export default function LandingPage() {
             <div className="bg-cream rounded-xl p-6 shadow-card border-2 border-sage">
               <p className="text-sm text-sage-dark font-medium mb-1">Pro</p>
               <p className="font-display text-3xl text-ink">$9.99</p>
-              <p className="text-sm text-stone mt-1">100 images/mo · No watermark · 1024px</p>
+              <p className="text-sm text-stone mt-1">300 images/mo · No watermark · 1024px</p>
             </div>
             <div className="bg-cream rounded-xl p-6 shadow-soft">
               <p className="text-sm text-stone mb-1">Studio</p>
               <p className="font-display text-3xl text-ink">$29.99</p>
-              <p className="text-sm text-stone mt-1">500 images/mo · 4K · Batch · Commercial</p>
+              <p className="text-sm text-stone mt-1">1,000 images/mo · 4K · Batch · Commercial</p>
             </div>
           </div>
           <Link

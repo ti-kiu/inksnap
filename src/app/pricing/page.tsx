@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "InkPreview Pricing — Free, Pro & Studio Plans",
   description:
-    "InkPreview pricing: Free plan with 3 daily images. Pro at $9.99/mo for 100 images. Studio at $29.99/mo for 4K, batch mode, and commercial license. Compare plans.",
+    "InkPreview pricing: Free plan with 3 daily images. Pro at $9.99/mo for 300 images. Studio at $29.99/mo for 4K, batch mode, and commercial license. Compare plans.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -38,7 +38,7 @@ const tiers = [
     highlight: true,
     badge: "Most Popular",
     features: [
-      { text: "100 images/month", included: true },
+      { text: "300 images/month", included: true },
       { text: "1024px resolution", included: true },
       { text: "No watermark", included: true },
       { text: "Tattoo Simulator", included: true },
@@ -59,7 +59,7 @@ const tiers = [
     desc: "For tattoo artists & shops",
     highlight: false,
     features: [
-      { text: "500 images/month", included: true },
+      { text: "1,000 images/month", included: true },
       { text: "4K resolution", included: true },
       { text: "No watermark", included: true },
       { text: "Batch mode (up to 50)", included: true },
@@ -74,13 +74,13 @@ const tiers = [
   },
   {
     name: "Credit Pack",
-    price: "$4.99",
+    price: "$9.99",
     period: "",
-    desc: "Don\'t want a subscription?",
+    desc: "Don\\'t want a subscription?",
     highlight: false,
     features: [
       { text: "50 credits", included: true },
-      { text: "~$0.10 per image", included: true },
+      { text: "~$0.20 per image", included: true },
       { text: "Never expires", included: true },
       { text: "Any feature, any resolution", included: true },
       { text: "No subscription required", included: true },
@@ -91,7 +91,7 @@ const tiers = [
 
 const faqItems = [
   { q: "Can I switch plans anytime?", a: "Yes. Upgrade or downgrade from your account settings. Changes take effect on your next billing cycle." },
-  { q: "Do unused images roll over?", a: "Monthly image limits reset each billing cycle. Credit packs never expire and don\'t reset." },
+  { q: "Do unused images roll over?", a: "Monthly image limits reset each billing cycle. Credit packs never expire and don\\'t reset." },
   { q: "What happens if I hit my image limit?", a: "You can wait for the next cycle, upgrade your plan, or buy a credit pack for additional images." },
   { q: "Is there a free trial of Pro or Studio?", a: "No formal trial, but the Free plan lets you test every core feature with 3 images per day." },
   { q: "Can I cancel anytime?", a: "Yes. No contracts. Cancel from your account page. You keep access until the end of your billing period." },
@@ -108,7 +108,7 @@ export default function PricingPage() {
       { '@type': 'Offer', 'name': 'Free', 'price': '0', 'priceCurrency': 'USD' },
       { '@type': 'Offer', 'name': 'Pro', 'price': '9.99', 'priceCurrency': 'USD', 'billingIncrement': 'P1M' },
       { '@type': 'Offer', 'name': 'Studio', 'price': '29.99', 'priceCurrency': 'USD', 'billingIncrement': 'P1M' },
-      { '@type': 'Offer', 'name': 'Credit Pack', 'price': '4.99', 'priceCurrency': 'USD' }
+      { '@type': 'Offer', 'name': 'Credit Pack', 'price': '9.99', 'priceCurrency': 'USD' }
     ]
   };
 
@@ -215,8 +215,8 @@ export default function PricingPage() {
               </thead>
               <tbody className="divide-y divide-sand/50">
                 {[
-                  ["Monthly Price", "$0", "$9.99/mo", "$29.99/mo", "$4.99 one-time"],
-                  ["Images", "3/day (~90/mo)", "100/mo", "500/mo", "50 (one-time, never expires)"],
+                  ["Monthly Price", "$0", "$9.99/mo", "$29.99/mo", "$9.99 one-time"],
+                  ["Images", "3/day (~90/mo)", "300/mo", "1,000/mo", "50 (one-time, never expires)"],
                   ["Resolution", "512px", "1024px", "4K", "1024px"],
                   ["Watermark", "Yes", "No", "No", "No"],
                   ["Tattoo Simulator", "✓", "✓", "✓", "✓"],
