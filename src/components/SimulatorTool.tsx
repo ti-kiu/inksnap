@@ -15,7 +15,7 @@ export default function SimulatorTool() {
   const [token, setToken] = useState<string | null>(null);
   const [usage, setUsage] = useState<Usage | null>(null);
   const [prompt, setPrompt] = useState('');
-  const [style, setStyle] = useState('Traditional');
+  const [style, setStyle] = useState('Blackwork');
   const [placement, setPlacement] = useState('Auto-detect');
   const [generating, setGenerating] = useState(false);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
@@ -26,8 +26,8 @@ export default function SimulatorTool() {
   // Tattoo overlay state
   const [overlayPos, setOverlayPos] = useState({ x: 50, y: 50 });
   const [overlaySize, setOverlaySize] = useState(200);
-  const [overlayOpacity, setOverlayOpacity] = useState(0.75); // Lower default for realism
-  const [blendMode, setBlendMode] = useState<string>('skin'); // New skin blend mode
+  const [overlayOpacity, setOverlayOpacity] = useState(0.90); // Tattoo ink transparency
+  const [blendMode, setBlendMode] = useState<string>('multiply'); // Multiply = white disappears
   const [overlayBlur, setOverlayBlur] = useState(0.5); // Edge softness
   const [overlayRotation, setOverlayRotation] = useState(0); // Rotation angle
   const [isDragging, setIsDragging] = useState(false);
@@ -369,7 +369,7 @@ export default function SimulatorTool() {
           <div className="bg-warm-white rounded-xl p-5 shadow-soft">
             <h3 className="font-display text-lg text-ink mb-4">Choose a style</h3>
             <div className="grid grid-cols-2 gap-3">
-              {['Traditional', 'Japanese', 'Geometric', 'Minimalist', 'Watercolor', 'Realism'].map(
+              {['Blackwork', 'Black & Grey', 'Traditional', 'Japanese', 'Geometric', 'Minimalist', 'Watercolor', 'Realism'].map(
                 (s) => (
                   <button
                     key={s}
