@@ -25,9 +25,11 @@ export default function SimulatorTool() {
 
   // Tattoo overlay state
   const [overlayPos, setOverlayPos] = useState({ x: 50, y: 50 });
-  const [overlaySize, setOverlaySize] = useState(200); // px
-  const [overlayOpacity, setOverlayOpacity] = useState(0.9);
-  const [blendMode, setBlendMode] = useState<string>('multiply');
+  const [overlaySize, setOverlaySize] = useState(200);
+  const [overlayOpacity, setOverlayOpacity] = useState(0.75); // Lower default for realism
+  const [blendMode, setBlendMode] = useState<string>('skin'); // New skin blend mode
+  const [overlayBlur, setOverlayBlur] = useState(0.5); // Edge softness
+  const [overlayRotation, setOverlayRotation] = useState(0); // Rotation angle
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
@@ -119,7 +121,53 @@ export default function SimulatorTool() {
     setOverlaySize(prev => Math.max(50, Math.min(400, prev - e.deltaY * 0.5)));
   }, []);
 
-  // Download composite image
+  // Get CSS blend mode and filter for realistic skin effect
+  const getOverlayStyle = useCallback((): React.CSSProperties => {
+    const baseStyle: React.CSSProperties = {
+      left: overlayPos.x,
+      top: overlayPos.y,
+      width: overlaySize,
+      height: overlaySize,
+      opacity: overlayOpacity,
+      transform: `rotate(${overlayRotation}deg)`,
+    };
+
+    switch (blendMode) {
+      case 'skin':
+        // Skin mode: multiply with lower opacity and slight blur for realism
+        return {
+          ...baseStyle,
+          mixBlendMode: 'multiply',
+          filter: `blur(${overlayBlur}px) contrast(0.9) brightness(1.05)`,
+        };
+      case 'multiply':
+        return {
+          ...baseStyle,
+          mixBlendMode: 'multiply',
+          filter: `blur(${overlayBlur}px)`,
+        };
+      case 'overlay':
+        return {
+          ...baseStyle,
+          mixBlendMode: 'overlay',
+          filter: `blur(${overlayBlur}px)`,
+        };
+      case 'screen':
+        return {
+          ...baseStyle,
+          mixBlendMode: 'screen',
+          filter: `blur(${overlayBlur}px)`,
+        };
+      case 'normal':
+      default:
+        return {
+          ...baseStyle,
+          filter: `blur(${overlayBlur}px)`,
+        };
+    }
+  }, [overlayPos, overlaySize, overlayOpacity, blendMode, overlayBlur, overlayRotation]);
+
+  // Download composite image with realistic skin effect
   const handleDownload = useCallback(() => {
     if (!uploadPreview || !resultUrl) return;
     const canvas = document.createElement('canvas');
@@ -147,9 +195,48 @@ export default function SimulatorTool() {
         const w = overlaySize * scaleX;
         const h = overlaySize * scaleY;
 
+        // Apply realistic skin blending
+        ctx.save();
+        
+        // Set blend mode
+        if (blendMode === 'skin' || blendMode === 'multiply') {
+          ctx.globalCompositeOperation = 'multiply';
+        } else if (blendMode === 'overlay') {
+          ctx.globalCompositeOperation = 'overlay';
+        } else if (blendMode === 'screen') {
+          ctx.globalCompositeOperation = 'screen';
+        }
+        
         ctx.globalAlpha = overlayOpacity;
-        ctx.drawImage(overlay, x, y, w, h);
-        ctx.globalAlpha = 1;
+        
+        // Apply rotation
+        if (overlayRotation !== 0) {
+          ctx.translate(x + w/2, y + h/2);
+          ctx.rotate(overlayRotation * Math.PI / 180);
+          ctx.drawImage(overlay, -w/2, -h/2, w, h);
+        } else {
+          ctx.drawImage(overlay, x, y, w, h);
+        }
+        
+        ctx.restore();
+
+        // Add subtle skin texture overlay for realism
+        if (blendMode === 'skin') {
+          ctx.save();
+          ctx.globalCompositeOperation = 'soft-light';
+          ctx.globalAlpha = 0.1;
+          // Create subtle noise texture
+          const imageData = ctx.getImageData(x, y, w, h);
+          const data = imageData.data;
+          for (let i = 0; i < data.length; i += 4) {
+            const noise = (Math.random() - 0.5) * 20;
+            data[i] += noise;     // R
+            data[i+1] += noise;   // G
+            data[i+2] += noise;   // B
+          }
+          ctx.putImageData(imageData, x, y);
+          ctx.restore();
+        }
 
         canvas.toBlob((blob) => {
           if (!blob) return;
@@ -164,7 +251,7 @@ export default function SimulatorTool() {
       overlay.src = resultUrl;
     };
     bg.src = uploadPreview;
-  }, [uploadPreview, resultUrl, overlayPos, overlaySize, overlayOpacity]);
+  }, [uploadPreview, resultUrl, overlayPos, overlaySize, overlayOpacity, blendMode, overlayRotation]);
 
   // Touch handlers for mobile
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
@@ -213,14 +300,7 @@ export default function SimulatorTool() {
                 {resultUrl && (
                   <div
                     className="absolute cursor-move select-none"
-                    style={{
-                      left: overlayPos.x,
-                      top: overlayPos.y,
-                      width: overlaySize,
-                      height: overlaySize,
-                      opacity: overlayOpacity,
-                      mixBlendMode: blendMode as React.CSSProperties['mixBlendMode'],
-                    }}
+                    style={getOverlayStyle()}
                     onMouseDown={handleMouseDown}
                     onTouchStart={handleTouchStart}
                     onTouchMove={handleTouchMove}
@@ -234,10 +314,10 @@ export default function SimulatorTool() {
                     />
                   </div>
                 )}
-                {/* Controls hint - hidden on mobile, shown on hover */}
+                {/* Controls hint */}
                 {resultUrl && (
                   <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full opacity-0 hover:opacity-100 transition-opacity pointer-events-none">
-                    拖拽移动 · 滚轮缩放 · 右侧调透明度
+                    Drag to move · Scroll to resize · Use controls for skin effect
                   </div>
                 )}
               </div>
@@ -364,42 +444,14 @@ export default function SimulatorTool() {
               <div className="space-y-4">
                 <div>
                   <label className="text-sm text-charcoal flex justify-between mb-1">
-                    <span>透明度</span>
-                    <span className="text-stone">{Math.round(overlayOpacity * 100)}%</span>
+                    <span>Blend Mode</span>
                   </label>
-                  <input
-                    type="range"
-                    min="0.1"
-                    max="1"
-                    step="0.05"
-                    value={overlayOpacity}
-                    onChange={(e) => setOverlayOpacity(parseFloat(e.target.value))}
-                    className="w-full accent-sage"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm text-charcoal flex justify-between mb-1">
-                    <span>大小</span>
-                    <span className="text-stone">{overlaySize}px</span>
-                  </label>
-                  <input
-                    type="range"
-                    min="50"
-                    max="400"
-                    step="10"
-                    value={overlaySize}
-                    onChange={(e) => setOverlaySize(parseInt(e.target.value))}
-                    className="w-full accent-sage"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm text-charcoal mb-2 block">混合模式</label>
                   <div className="grid grid-cols-2 gap-2">
                     {[
-                      { value: 'normal', label: '正常' },
-                      { value: 'multiply', label: '正片叠底' },
-                      { value: 'overlay', label: '叠加' },
-                      { value: 'screen', label: '滤色' },
+                      { value: 'skin', label: '🎨 Skin (Best)' },
+                      { value: 'multiply', label: 'Multiply' },
+                      { value: 'overlay', label: 'Overlay' },
+                      { value: 'normal', label: 'Normal' },
                     ].map((m) => (
                       <button
                         key={m.value}
@@ -415,11 +467,76 @@ export default function SimulatorTool() {
                     ))}
                   </div>
                 </div>
+                <div>
+                  <label className="text-sm text-charcoal flex justify-between mb-1">
+                    <span>Opacity</span>
+                    <span className="text-stone">{Math.round(overlayOpacity * 100)}%</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="0.1"
+                    max="1"
+                    step="0.05"
+                    value={overlayOpacity}
+                    onChange={(e) => setOverlayOpacity(parseFloat(e.target.value))}
+                    className="w-full accent-sage"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm text-charcoal flex justify-between mb-1">
+                    <span>Edge Blur</span>
+                    <span className="text-stone">{overlayBlur.toFixed(1)}px</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="3"
+                    step="0.5"
+                    value={overlayBlur}
+                    onChange={(e) => setOverlayBlur(parseFloat(e.target.value))}
+                    className="w-full accent-sage"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm text-charcoal flex justify-between mb-1">
+                    <span>Rotation</span>
+                    <span className="text-stone">{overlayRotation}°</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="-45"
+                    max="45"
+                    step="5"
+                    value={overlayRotation}
+                    onChange={(e) => setOverlayRotation(parseInt(e.target.value))}
+                    className="w-full accent-sage"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm text-charcoal flex justify-between mb-1">
+                    <span>Size</span>
+                    <span className="text-stone">{overlaySize}px</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="50"
+                    max="400"
+                    step="10"
+                    value={overlaySize}
+                    onChange={(e) => setOverlaySize(parseInt(e.target.value))}
+                    className="w-full accent-sage"
+                  />
+                </div>
                 <button
-                  onClick={() => setOverlayPos({ x: 50, y: 50 })}
+                  onClick={() => {
+                    setOverlayPos({ x: 50, y: 50 });
+                    setOverlayRotation(0);
+                    setOverlayBlur(0.5);
+                    setOverlayOpacity(0.75);
+                  }}
                   className="w-full text-sm text-sage border border-sage rounded-md py-1.5 hover:bg-sage-light transition"
                 >
-                  重置位置
+                  Reset All
                 </button>
                 <button
                   onClick={handleDownload}
@@ -428,7 +545,7 @@ export default function SimulatorTool() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                   </svg>
-                  下载预览图
+                  Download Preview
                 </button>
               </div>
             </div>
@@ -453,7 +570,7 @@ export default function SimulatorTool() {
               <Link href="/pricing" className="text-sage-dark underline">
                 Upgrade to Pro
               </Link>{' '}
-              for 100 images/month.
+              for 300 images/month.
             </p>
           </div>
         </aside>
