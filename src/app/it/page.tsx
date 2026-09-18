@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Anteprima dei tatuaggi sul tuo corpo con IA. Gratuito, istantaneo e realistico. Oltre 50 stili disponibili.',
   alternates: {
     canonical: 'https://inkpreview.co/it',
-    languages: { 'en': 'https://inkpreview.co', 'pt': 'https://inkpreview.co/pt', 'de': 'https://inkpreview.co/de', 'it': 'https://inkpreview.co/it' },
+    languages: { 'en': 'https://inkpreview.co', 'pt': 'https://inkpreview.co/pt', 'de': 'https://inkpreview.co/de', 'it': 'https://inkpreview.co/it', 'x-default': 'https://inkpreview.co' },
   },
   openGraph: {
     title: 'Simulatore Tatuaggi con IA | InkPreview',

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Vorschau von Tattoo-Designs auf Ihrem Körper mit KI. Kostenlos, sofort und realistisch. Über 50 Stile verfügbar.',
   alternates: {
     canonical: 'https://inkpreview.co/de',
-    languages: { 'en': 'https://inkpreview.co', 'pt': 'https://inkpreview.co/pt', 'de': 'https://inkpreview.co/de', 'it': 'https://inkpreview.co/it' },
+    languages: { 'en': 'https://inkpreview.co', 'pt': 'https://inkpreview.co/pt', 'de': 'https://inkpreview.co/de', 'it': 'https://inkpreview.co/it', 'x-default': 'https://inkpreview.co' },
   },
   openGraph: {
     title: 'Tattoo-Simulator mit KI | InkPreview',

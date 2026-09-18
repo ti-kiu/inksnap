@@ -11,6 +11,7 @@ export const metadata: Metadata = {
       'pt': 'https://inkpreview.co/pt',
       'de': 'https://inkpreview.co/de',
       'it': 'https://inkpreview.co/it',
+      'x-default': 'https://inkpreview.co',
     },
   },
 };

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
       'en': 'https://inkpreview.co',
       'pt': 'https://inkpreview.co/pt',
       'de': 'https://inkpreview.co/de',
-      'it': 'https://inkpreview.co/it',
+      'it': 'https://inkpreview.co/it', 'x-default': 'https://inkpreview.co',
     },
   },
   openGraph: {
