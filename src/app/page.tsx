@@ -143,51 +143,12 @@ export default function LandingPage() {
             <div className="relative">
               <div className="bg-warm-white rounded-xl shadow-card p-4 md:p-6">
                 <div className="aspect-[4/5] bg-sand rounded-lg flex items-center justify-center overflow-hidden">
-                  <svg viewBox="0 0 400 500" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                    {/* Background split */}
-                    <rect x="0" y="0" width="200" height="500" fill="#F5F0EB" />
-                    <rect x="200" y="0" width="200" height="500" fill="#E8E3DE" />
-                    {/* Divider */}
-                    <line x1="200" y1="40" x2="200" y2="460" stroke="#A8B5A0" strokeWidth="2" strokeDasharray="6,4" />
-                    {/* Labels */}
-                    <text x="100" y="30" textAnchor="middle" fill="#6B6560" fontSize="13" fontFamily="system-ui">Before</text>
-                    <text x="300" y="30" textAnchor="middle" fill="#6B6560" fontSize="13" fontFamily="system-ui">After</text>
-                    {/* Left arm (bare) */}
-                    <path d="M80,80 C75,100 70,140 72,200 C74,260 78,320 82,380 C84,410 86,430 90,450 L110,450 C106,430 104,410 102,380 C98,320 94,260 92,200 C90,140 95,100 100,80 Z" fill="#D4C4B0" stroke="#B8A898" strokeWidth="1.5" />
-                    {/* Left arm skin detail */}
-                    <path d="M82,120 C84,160 86,200 86,240" stroke="#C4B4A0" strokeWidth="0.8" fill="none" />
-                    <path d="M96,120 C94,160 92,200 92,240" stroke="#C4B4A0" strokeWidth="0.8" fill="none" />
-                    {/* Right arm (with tattoo) */}
-                    <path d="M280,80 C275,100 270,140 272,200 C274,260 278,320 282,380 C284,410 286,430 290,450 L310,450 C306,430 304,410 302,380 C298,320 294,260 292,200 C290,140 295,100 300,80 Z" fill="#D4C4B0" stroke="#B8A898" strokeWidth="1.5" />
-                    {/* Tattoo design on right arm - floral/botanical */}
-                    <g transform="translate(265,140)" opacity="0.85">
-                      {/* Main flower */}
-                      <circle cx="35" cy="40" r="18" fill="none" stroke="#5D6B55" strokeWidth="1.8" />
-                      <circle cx="35" cy="40" r="8" fill="#5D6B55" opacity="0.3" />
-                      <circle cx="35" cy="40" r="3" fill="#5D6B55" />
-                      {/* Petals */}
-                      <ellipse cx="35" cy="18" rx="7" ry="12" fill="none" stroke="#5D6B55" strokeWidth="1.5" />
-                      <ellipse cx="35" cy="62" rx="7" ry="12" fill="none" stroke="#5D6B55" strokeWidth="1.5" />
-                      <ellipse cx="13" cy="40" rx="12" ry="7" fill="none" stroke="#5D6B55" strokeWidth="1.5" />
-                      <ellipse cx="57" cy="40" rx="12" ry="7" fill="none" stroke="#5D6B55" strokeWidth="1.5" />
-                      {/* Stem going down */}
-                      <path d="M35,70 C35,90 30,110 32,140 C34,160 28,180 30,200" stroke="#5D6B55" strokeWidth="2" fill="none" />
-                      {/* Leaves on stem */}
-                      <path d="M32,110 C22,100 15,95 10,100 C15,105 22,108 32,110Z" fill="#5D6B55" opacity="0.4" />
-                      <path d="M33,150 C43,140 50,135 55,140 C50,145 43,148 33,150Z" fill="#5D6B55" opacity="0.4" />
-                      {/* Small buds */}
-                      <circle cx="15" cy="170" r="4" fill="none" stroke="#5D6B55" strokeWidth="1.2" />
-                      <circle cx="50" cy="125" r="3" fill="none" stroke="#5D6B55" strokeWidth="1.2" />
-                    </g>
-                    {/* Arrow between */}
-                    <g transform="translate(180,230)">
-                      <path d="M10,0 L30,0" stroke="#8B9E82" strokeWidth="2" />
-                      <path d="M26,-5 L34,0 L26,5" fill="#8B9E82" />
-                    </g>
-                    {/* AI badge */}
-                    <rect x="290" y="450" width="80" height="24" rx="12" fill="#8B9E82" />
-                    <text x="330" y="466" textAnchor="middle" fill="white" fontSize="10" fontFamily="system-ui" fontWeight="600">AI Preview</text>
-                  </svg>
+                  <img
+                    src="/hero-tattoo.jpg"
+                    alt="Realistic tattoo preview on arm - InkPreview AI tattoo simulator"
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                  />
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-sage-light/30 rounded-full -z-10" />
