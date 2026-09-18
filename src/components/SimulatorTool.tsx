@@ -57,6 +57,49 @@ export default function SimulatorTool() {
     reader.readAsDataURL(file);
   }, []);
 
+  // Whitewash near-background pixels to pure white for clean multiply
+  // Threshold: pixels with R,G,B all > 220 become pure white
+  const whitewashImage = useCallback((imageUrl: string): Promise<string> => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) { resolve(imageUrl); return; }
+        
+        ctx.drawImage(img, 0, 0);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        const threshold = 225; // near-white threshold
+        
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i], g = data[i+1], b = data[i+2];
+          // If pixel is close to white, force pure white
+          if (r > threshold && g > threshold && b > threshold) {
+            data[i] = 255;     // R
+            data[i+1] = 255;   // G
+            data[i+2] = 255;   // B
+          }
+          // Also lighten very bright pixels (threshold - 20 to threshold)
+          else if (r > threshold - 20 && g > threshold - 20 && b > threshold - 20) {
+            const factor = 0.5; // push towards white
+            data[i] = Math.min(255, r + (255 - r) * factor);
+            data[i+1] = Math.min(255, g + (255 - g) * factor);
+            data[i+2] = Math.min(255, b + (255 - b) * factor);
+          }
+        }
+        
+        ctx.putImageData(imageData, 0, 0);
+        resolve(canvas.toDataURL('image/png'));
+      };
+      img.onerror = () => resolve(imageUrl);
+      img.src = imageUrl;
+    });
+  }, []);
+
   // Handle generate
   const handleGenerate = useCallback(async () => {
     if (!token || !prompt.trim()) return;
@@ -81,7 +124,9 @@ export default function SimulatorTool() {
       });
 
       if (result.imageUrl.startsWith('https://')) {
-        setResultUrl(result.imageUrl);
+        // Force near-white background to pure white for clean multiply blending
+        const processed = await whitewashImage(result.imageUrl);
+        setResultUrl(processed);
       } else {
         setResultUrl(null);
       }
