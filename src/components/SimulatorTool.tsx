@@ -28,7 +28,7 @@ export default function SimulatorTool() {
   const [overlaySize, setOverlaySize] = useState(200);
   const [overlayOpacity, setOverlayOpacity] = useState(0.90); // Tattoo ink transparency
   const [blendMode, setBlendMode] = useState<string>('multiply'); // Multiply = white disappears
-  const [overlayBlur, setOverlayBlur] = useState(0.5); // Edge softness
+  const [overlayBlur, setOverlayBlur] = useState(0.8); // Slightly more blur for skin integration
   const [overlayRotation, setOverlayRotation] = useState(0); // Rotation angle
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -58,7 +58,7 @@ export default function SimulatorTool() {
   }, []);
 
   // Whitewash near-background pixels to pure white for clean multiply
-  // Threshold: pixels with R,G,B all > 220 become pure white
+  // Threshold: pixels with R,G,B all > 210 become pure white
   const whitewashImage = useCallback((imageUrl: string): Promise<string> => {
     return new Promise((resolve) => {
       const img = new Image();
@@ -73,19 +73,24 @@ export default function SimulatorTool() {
         ctx.drawImage(img, 0, 0);
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const data = imageData.data;
-        const threshold = 225; // near-white threshold
+        const whiteThreshold = 210; // Lower = more aggressive whitewash
+        const lightenThreshold = 230; // Transition zone
         
         for (let i = 0; i < data.length; i += 4) {
           const r = data[i], g = data[i+1], b = data[i+2];
-          // If pixel is close to white, force pure white
-          if (r > threshold && g > threshold && b > threshold) {
-            data[i] = 255;     // R
-            data[i+1] = 255;   // G
-            data[i+2] = 255;   // B
+          const max = Math.max(r, g, b);
+          const min = Math.min(r, g, b);
+          const saturation = max === 0 ? 0 : (max - min) / max;
+          
+          // Force pure white for near-white pixels
+          if (r > whiteThreshold && g > whiteThreshold && b > whiteThreshold && saturation < 0.15) {
+            data[i] = 255;
+            data[i+1] = 255;
+            data[i+2] = 255;
           }
-          // Also lighten very bright pixels (threshold - 20 to threshold)
-          else if (r > threshold - 20 && g > threshold - 20 && b > threshold - 20) {
-            const factor = 0.5; // push towards white
+          // Lighten transition zone
+          else if (r > lightenThreshold && g > lightenThreshold && b > lightenThreshold && saturation < 0.15) {
+            const factor = 0.7;
             data[i] = Math.min(255, r + (255 - r) * factor);
             data[i+1] = Math.min(255, g + (255 - g) * factor);
             data[i+2] = Math.min(255, b + (255 - b) * factor);
@@ -189,7 +194,7 @@ export default function SimulatorTool() {
         return {
           ...baseStyle,
           mixBlendMode: 'multiply',
-          filter: `blur(${overlayBlur}px)`,
+          filter: `blur(${overlayBlur}px) saturate(0.82) contrast(1.05)`,
         };
       case 'overlay':
         return {

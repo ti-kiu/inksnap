@@ -2,19 +2,21 @@ import { Metadata } from 'next';
 import '@/app/tattoo-ideas/pseo.css';
 import content from '@/data/pseo-content.json';
 
-const styleSlugs = ["anime", "blackwork", "fine-line", "floral", "geometric", "japanese", "minimalist", "neo-traditional", "ornamental", "realism", "script-lettering", "small-simple", "snake-dragon", "traditional", "tribal", "watercolor"];
+const placementSlugs = ["placement-ankle", "placement-back", "placement-forearm", "placement-ribs", "placement-shoulder", "placement-thigh", "placement-upper-arm", "placement-wrist"];
+const placementMap: Record<string, string> = {"placement-ankle": "ankle", "placement-back": "back", "placement-forearm": "forearm", "placement-ribs": "ribs", "placement-shoulder": "shoulder", "placement-thigh": "thigh", "placement-upper-arm": "upper-arm", "placement-wrist": "wrist"};
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ placement: string }>;
 }
 
 export async function generateStaticParams() {
-  return styleSlugs.map((slug) => ({ slug }));
+  return placementSlugs.map((slug) => ({ placement: placementMap[slug] }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const page = content[slug as keyof typeof content];
+  const { placement } = await params;
+  const slug = `placement-${placement}` as keyof typeof content;
+  const page = content[slug];
   if (!page) return {};
   return {
     title: page.title,
@@ -30,9 +32,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function PseoStylePage({ params }: PageProps) {
-  const { slug } = await params;
-  const page = content[slug as keyof typeof content];
+export default async function PlacementPage({ params }: PageProps) {
+  const { placement } = await params;
+  const slug = `placement-${placement}` as keyof typeof content;
+  const page = content[slug];
   if (!page) return <div className="p-8 text-center">Page not found</div>;
 
   return (

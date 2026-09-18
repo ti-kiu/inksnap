@@ -1,0 +1,33 @@
+{
+  "brand": "InkPreview",
+  "domain": "https://inkpreview.co",
+  "image_base": "/images/ideas",
+  "styles": [
+    { "slug": "geometric", "name": "Geometric", "images": 24, "blurb": "Clean lines, symmetry and sacred-geometry patterns that hold their shape for decades.", "keywords": ["geometric tattoo ideas", "sacred geometry tattoo", "mandala tattoo"] },
+    { "slug": "japanese", "name": "Japanese", "images": 24, "blurb": "Irezumi tradition: bold outlines, flowing water, dragons, koi and cherry blossoms.", "keywords": ["japanese tattoo ideas", "irezumi tattoo", "dragon tattoo"] },
+    { "slug": "minimalist", "name": "Minimalist", "images": 24, "blurb": "Small, quiet, single-needle designs for people who want ink without the noise.", "keywords": ["minimalist tattoo ideas", "small tattoo ideas", "fine line tattoo"] },
+    { "slug": "blackwork", "name": "Blackwork", "images": 24, "blurb": "Heavy solid black, high contrast and negative space used as a design element.", "keywords": ["blackwork tattoo ideas", "solid black tattoo", "blackout tattoo"] },
+    { "slug": "fine-line", "name": "Fine Line", "images": 24, "blurb": "Delicate single-needle linework — floral, script and portrait detail at hairline scale.", "keywords": ["fine line tattoo ideas", "single needle tattoo", "delicate tattoo"] },
+    { "slug": "traditional", "name": "Traditional", "images": 24, "blurb": "American traditional: bold outlines, limited palette, swallows, anchors and roses.", "keywords": ["traditional tattoo ideas", "old school tattoo", "american traditional tattoo"] },
+    { "slug": "realism", "name": "Realism", "images": 24, "blurb": "Photographic shading and depth — portraits, animals and nature rendered in skin.", "keywords": ["realism tattoo ideas", "realistic tattoo", "portrait tattoo"] },
+    { "slug": "tribal", "name": "Tribal", "images": 24, "blurb": "Polynesian, Maori and Filipino patterns where every mark carries meaning.", "keywords": ["tribal tattoo ideas", "polynesian tattoo", "maori tattoo"] },
+    { "slug": "watercolor", "name": "Watercolor", "images": 24, "blurb": "Washed colour, splatter and brushstroke effects without hard outlines.", "keywords": ["watercolor tattoo ideas", "colorful tattoo", "paint splash tattoo"] },
+    { "slug": "neo-traditional", "name": "Neo-Traditional", "images": 24, "blurb": "Traditional bones with a modern palette, richer detail and dimensional shading.", "keywords": ["neo traditional tattoo ideas", "modern traditional tattoo"] },
+    { "slug": "ornamental", "name": "Ornamental", "images": 24, "blurb": "Mandalas, dotwork and jewellery-like patterns built to flow with the body.", "keywords": ["ornamental tattoo ideas", "mandala tattoo", "dotwork tattoo"] },
+    { "slug": "script-lettering", "name": "Script & Lettering", "images": 24, "blurb": "Typography, dates, names and quotes — placement and font choice decide legibility.", "keywords": ["script tattoo ideas", "lettering tattoo", "quote tattoo"] },
+    { "slug": "anime", "name": "Anime & Manga", "images": 24, "blurb": "Panel art, characters and symbols from manga and anime, from subtle to full sleeve.", "keywords": ["anime tattoo ideas", "manga tattoo", "otaku tattoo"] },
+    { "slug": "floral", "name": "Floral", "images": 24, "blurb": "Peonies, roses, wildflowers and botanical line art in every size and style.", "keywords": ["floral tattoo ideas", "flower tattoo", "botanical tattoo"] },
+    { "slug": "snake-dragon", "name": "Snake & Dragon", "images": 24, "blurb": "Serpents and dragons that wrap the arm, spine or shoulder as one flowing shape.", "keywords": ["snake tattoo ideas", "dragon tattoo", "serpent tattoo"] },
+    { "slug": "small-simple", "name": "Small & Simple", "images": 24, "blurb": "First-tattoo territory: tiny symbols, coordinates, dots and one-word designs.", "keywords": ["small simple tattoo ideas", "tiny tattoo", "first tattoo ideas"] }
+  ],
+  "placements": [
+    { "slug": "forearm", "name": "Forearm" },
+    { "slug": "upper-arm", "name": "Upper Arm" },
+    { "slug": "back", "name": "Back" },
+    { "slug": "shoulder", "name": "Shoulder" },
+    { "slug": "ribs", "name": "Ribs" },
+    { "slug": "ankle", "name": "Ankle" },
+    { "slug": "wrist", "name": "Wrist" },
+    { "slug": "thigh", "name": "Thigh" }
+  ]
+}
