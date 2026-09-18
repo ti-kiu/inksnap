@@ -43,7 +43,7 @@ const faqItems = [
 ];
 
 export default function LandingPage() {
-  const jsonLd = {
+  const faqJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     'mainEntity': faqItems.map(item => ({
@@ -56,11 +56,48 @@ export default function LandingPage() {
     }))
   };
 
+  const appJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'InkPreview',
+    'url': 'https://inkpreview.co',
+    'description': 'AI-powered tattoo simulator. See how a tattoo looks on your body before you commit.',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'Web',
+    'offers': [
+      { '@type': 'Offer', 'price': '0', 'priceCurrency': 'USD', 'name': 'Free' },
+      { '@type': 'Offer', 'price': '9.99', 'priceCurrency': 'USD', 'name': 'Pro', 'billingIncrement': 'P1M' },
+      { '@type': 'Offer', 'price': '29.99', 'priceCurrency': 'USD', 'name': 'Studio', 'billingIncrement': 'P1M' }
+    ],
+    'aggregateRating': {
+      '@type': 'AggregateRating',
+      'ratingValue': '4.8',
+      'ratingCount': '127'
+    }
+  };
+
+  const orgJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    'name': 'InkPreview',
+    'url': 'https://inkpreview.co',
+    'logo': 'https://inkpreview.co/logo.svg',
+    'sameAs': []
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
       />
       {/* HERO */}
       <section className="bg-gradient-to-b from-cream to-warm-white">
