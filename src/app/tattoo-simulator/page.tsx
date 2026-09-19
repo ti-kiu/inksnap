@@ -4,15 +4,34 @@ import SimulatorTool from "@/components/SimulatorTool";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 export const metadata: Metadata = {
-  title: "Tattoo Simulator — Virtual Tattoo Try On",
+  title: "Tattoo Simulator — Virtual Tattoo Try On | InkPreview",
   description:
     "Upload your photo and see how any tattoo looks on your body. Free virtual tattoo try on with AI. Adjust size, placement, and style in seconds.",
   alternates: { canonical: "/tattoo-simulator" },
 };
 
+const faqItems = [
+  { q: "Is the tattoo simulator really free?", a: "Yes. You get 3 free previews per day with no account required. Pro plans start at $9.99/mo for 300 images." },
+  { q: "How accurate is the AI tattoo preview?", a: "The AI maps the design onto your skin using perspective and lighting adjustments. Results are for reference — always consult a licensed tattoo artist for the final design." },
+  { q: "What photo should I upload?", a: "Take a clear, well-lit photo of the body area you want to tattoo. Arms, legs, back, chest, and ribs all work. Avoid filters or heavy shadows." },
+  { q: "Can I use my own tattoo design?", a: "Yes. Upload any reference image, or describe what you want and the AI will generate a design for you." },
+  { q: "Does it work on all skin tones?", a: "Yes. The simulator adapts the tattoo overlay to match your skin tone and lighting conditions in the photo." },
+];
+
 export default function TattooSimulator() {
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqItems.map(item => ({
+      '@type': 'Question',
+      'name': item.q,
+      'acceptedAnswer': { '@type': 'Answer', 'text': item.a }
+    }))
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* HERO */}
       <section className="max-w-7xl mx-auto px-6 py-8 md:py-12 text-center">
         <span className="inline-block px-3 py-1 bg-sage-light text-sage-dark text-xs font-medium rounded-full mb-4">
@@ -113,6 +132,41 @@ export default function TattooSimulator() {
         >
           Try the Simulator Free
         </Link>
+      </section>
+
+      {/* RELATED TOOLS */}
+      <section className="py-12">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="font-display text-display-md text-ink text-center mb-8">Explore More Tools</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/tattoo-stencil-generator" className="bg-warm-white rounded-xl p-6 border border-sand hover:shadow-card transition">
+              <h3 className="font-display text-lg text-ink mb-2">Tattoo Stencil Generator</h3>
+              <p className="text-stone text-sm">Convert any image into a clean tattoo stencil outline. Perfect for artists and clients.</p>
+            </Link>
+            <Link href="/tattoo-cover-up-design" className="bg-warm-white rounded-xl p-6 border border-sand hover:shadow-card transition">
+              <h3 className="font-display text-lg text-ink mb-2">Tattoo Cover-up Designer</h3>
+              <p className="text-stone text-sm">Design a cover-up for an existing tattoo. AI suggests patterns that work with your old ink.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-warm-white py-16 md:py-20">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="font-display text-display-md text-ink text-center mb-10">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {faqItems.map((item, i) => (
+              <div key={i} className="border-b border-sand pb-6 last:border-0">
+                <h3 className="font-display text-lg text-ink mb-2">{item.q}</h3>
+                <p className="text-stone text-sm leading-relaxed">{item.a}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-stone text-sm mt-8">
+            Browse <Link href="/tattoo-ideas/hub" className="text-sage underline">tattoo ideas</Link> by style, or try the <Link href="/tattoo-stencil-generator" className="text-sage underline">stencil generator</Link>.
+          </p>
+        </div>
       </section>
     </>
   );

@@ -9,9 +9,27 @@ export const metadata: Metadata = {
   alternates: { canonical: "/tattoo-cover-up-design" },
 };
 
+const faqItems = [
+  { q: "Can any tattoo be covered up?", a: "Most tattoos can be covered, but darker and larger originals are more challenging. The AI suggests designs that work with existing lines and shading." },
+  { q: "How does the cover-up designer work?", a: "Upload a photo of your existing tattoo. The AI analyzes the size, shape, and darkness, then suggests cover-up designs that will effectively hide the original." },
+  { q: "Is the cover-up preview accurate?", a: "The preview shows a realistic reference, but the final result depends on your tattoo artist's skill and technique. Always consult a professional before booking." },
+  { q: "Do I need to remove my old tattoo first?", a: "No. Cover-ups work by placing new ink over existing ink. Laser removal is only needed if the original is very dark or large and you want a lighter cover-up design." },
+];
+
 export default function CoverUpDesign() {
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqItems.map(item => ({
+      '@type': 'Question',
+      'name': item.q,
+      'acceptedAnswer': { '@type': 'Answer', 'text': item.a }
+    }))
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* HERO */}
       <section className="max-w-5xl mx-auto px-6 pt-16 pb-12 md:pt-24 text-center">
         <span className="inline-block px-3 py-1 bg-terracotta-light text-terracotta text-xs font-medium rounded-full mb-4">
@@ -125,6 +143,41 @@ export default function CoverUpDesign() {
             Upload and Explore Cover-ups
           </Link>
           <p className="text-xs text-stone mt-4">AI-generated reference. Consult a professional tattoo artist before inking.</p>
+        </div>
+      </section>
+
+      {/* RELATED TOOLS */}
+      <section className="py-12 bg-warm-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="font-display text-display-md text-ink text-center mb-8">Explore More Tools</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/tattoo-simulator" className="bg-white rounded-xl p-6 border border-sand hover:shadow-card transition">
+              <h3 className="font-display text-lg text-ink mb-2">Tattoo Simulator</h3>
+              <p className="text-stone text-sm">Preview how any tattoo looks on your body before you commit. Upload a photo and try designs.</p>
+            </Link>
+            <Link href="/tattoo-stencil-generator" className="bg-white rounded-xl p-6 border border-sand hover:shadow-card transition">
+              <h3 className="font-display text-lg text-ink mb-2">Tattoo Stencil Generator</h3>
+              <p className="text-stone text-sm">Convert any image into a clean tattoo stencil outline. Perfect for artists and clients.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="font-display text-display-md text-ink text-center mb-10">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {faqItems.map((item, i) => (
+              <div key={i} className="border-b border-sand pb-6 last:border-0">
+                <h3 className="font-display text-lg text-ink mb-2">{item.q}</h3>
+                <p className="text-stone text-sm leading-relaxed">{item.a}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-stone text-sm mt-8">
+            Browse <Link href="/tattoo-ideas/hub" className="text-sage underline">tattoo ideas</Link> by style, or try the <Link href="/tattoo-simulator" className="text-sage underline">tattoo simulator</Link>.
+          </p>
         </div>
       </section>
     </>
