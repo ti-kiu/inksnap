@@ -1,4 +1,5 @@
 import HeroCarousel from "@/components/HeroCarousel";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -165,7 +166,12 @@ export default function LandingPage() {
               </p>
             </div>
             <div className="relative">
-              <HeroCarousel />
+              <BeforeAfterSlider
+                beforeSrc="/images/tool-examples/simulator-before.webp"
+                afterSrc="/images/tool-examples/simulator-after.webp"
+                beforeAlt="Clean skin before tattoo"
+                afterAlt="AI tattoo preview on skin"
+              />
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-sage-light/30 rounded-full -z-10" />
               <div className="absolute -top-4 -left-4 w-16 h-16 bg-terracotta-light/40 rounded-full -z-10" />
             </div>
