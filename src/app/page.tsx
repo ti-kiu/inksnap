@@ -1,4 +1,3 @@
-import HeroCarousel from "@/components/HeroCarousel";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import Link from "next/link";
 import type { Metadata } from "next";
