@@ -21,7 +21,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://inkpreview.co"),
   title: {
-    default: "Tattoo Simulator & Try On — Preview Before You Ink | InkPreview",
+    default: "Tattoo Simulator — Preview Before You Ink | InkPreview",
     template: "%s | InkPreview",
   },
   description:

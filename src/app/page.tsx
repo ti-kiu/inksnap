@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   description:
-    "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups. Try it free.",
+    "See how a tattoo looks on your body before you commit. InkPreview uses AI to simulate tattoos on your photo, generate stencils, and design cover-ups.",
   alternates: {
     canonical: '/',
     languages: {
