@@ -30,6 +30,9 @@ export default function SimulatorTool() {
   const [blendMode, setBlendMode] = useState<string>('multiply'); // Multiply = white disappears
   const [overlayBlur, setOverlayBlur] = useState(0.8); // Slightly more blur for skin integration
   const [overlayRotation, setOverlayRotation] = useState(0); // Rotation angle
+  const [overlayTiltX, setOverlayTiltX] = useState(0); // Perspective tilt X (-45 to 45)
+  const [overlayTiltY, setOverlayTiltY] = useState(0); // Perspective tilt Y (-45 to 45)
+  const [overlayDisplacement, setOverlayDisplacement] = useState(0); // Skin texture displacement (0-8)
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
@@ -180,49 +183,61 @@ export default function SimulatorTool() {
 
   // Get CSS blend mode and filter for realistic skin effect
   const getOverlayStyle = useCallback((): React.CSSProperties => {
+    const perspective = 600; // px perspective distance
+    const transform = `rotate(${overlayRotation}deg) perspective(${perspective}px) rotateX(${overlayTiltX}deg) rotateY(${overlayTiltY}deg)`;
+
+    // Displacement filter via SVG feDisplacementMap
+    const displacementFilter = overlayDisplacement > 0
+      ? `url(#skin-displacement-${overlayDisplacement})`
+      : '';
+
     const baseStyle: React.CSSProperties = {
       left: overlayPos.x,
       top: overlayPos.y,
       width: overlaySize,
       height: overlaySize,
       opacity: overlayOpacity,
-      transform: `rotate(${overlayRotation}deg)`,
+      transform,
+      transformOrigin: 'center center',
+    };
+
+    const combineFilters = (blendFilters: string) => {
+      return [displacementFilter, blendFilters].filter(Boolean).join(' ');
     };
 
     switch (blendMode) {
       case 'skin':
-        // Skin mode: multiply with lower opacity and slight blur for realism
         return {
           ...baseStyle,
           mixBlendMode: 'multiply',
-          filter: `blur(${overlayBlur}px) contrast(0.9) brightness(1.05)`,
+          filter: combineFilters(`blur(${overlayBlur}px) contrast(0.9) brightness(1.05)`),
         };
       case 'multiply':
         return {
           ...baseStyle,
           mixBlendMode: 'multiply',
-          filter: `blur(${overlayBlur}px) saturate(0.82) contrast(1.05)`,
+          filter: combineFilters(`blur(${overlayBlur}px) saturate(0.82) contrast(1.05)`),
         };
       case 'overlay':
         return {
           ...baseStyle,
           mixBlendMode: 'overlay',
-          filter: `blur(${overlayBlur}px)`,
+          filter: combineFilters(`blur(${overlayBlur}px)`),
         };
       case 'screen':
         return {
           ...baseStyle,
           mixBlendMode: 'screen',
-          filter: `blur(${overlayBlur}px)`,
+          filter: combineFilters(`blur(${overlayBlur}px)`),
         };
       case 'normal':
       default:
         return {
           ...baseStyle,
-          filter: `blur(${overlayBlur}px)`,
+          filter: combineFilters(`blur(${overlayBlur}px)`),
         };
     }
-  }, [overlayPos, overlaySize, overlayOpacity, blendMode, overlayBlur, overlayRotation]);
+  }, [overlayPos, overlaySize, overlayOpacity, blendMode, overlayBlur, overlayRotation, overlayTiltX, overlayTiltY, overlayDisplacement]);
 
   // Download composite image with realistic skin effect
   const handleDownload = useCallback(() => {
@@ -333,6 +348,16 @@ export default function SimulatorTool() {
       <div className="grid lg:grid-cols-[1fr_340px] gap-8">
         {/* MAIN PREVIEW AREA */}
         <div className="space-y-6">
+          {/* SVG Displacement Filters for Skin Texture */}
+          <svg width="0" height="0" style={{ position: 'absolute' }}>
+            {[1,2,3,4,5,6,7,8].map((n) => (
+              <filter key={n} id={`skin-displacement-${n}`} x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="turbulence" baseFrequency={0.015 + n * 0.005} numOctaves="3" seed="2" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale={n * 1.5} xChannelSelector="R" yChannelSelector="G" />
+              </filter>
+            ))}
+          </svg>
+
           {/* Upload Zone / Preview with Overlay */}
           <div
             ref={containerRef}
@@ -571,6 +596,51 @@ export default function SimulatorTool() {
                 </div>
                 <div>
                   <label className="text-sm text-charcoal flex justify-between mb-1">
+                    <span>Tilt X (curve)</span>
+                    <span className="text-stone">{overlayTiltX}°</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="-30"
+                    max="30"
+                    step="3"
+                    value={overlayTiltX}
+                    onChange={(e) => setOverlayTiltX(parseInt(e.target.value))}
+                    className="w-full accent-sage"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm text-charcoal flex justify-between mb-1">
+                    <span>Tilt Y (wrap)</span>
+                    <span className="text-stone">{overlayTiltY}°</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="-30"
+                    max="30"
+                    step="3"
+                    value={overlayTiltY}
+                    onChange={(e) => setOverlayTiltY(parseInt(e.target.value))}
+                    className="w-full accent-sage"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm text-charcoal flex justify-between mb-1">
+                    <span>Skin Texture</span>
+                    <span className="text-stone">{overlayDisplacement}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="8"
+                    step="1"
+                    value={overlayDisplacement}
+                    onChange={(e) => setOverlayDisplacement(parseInt(e.target.value))}
+                    className="w-full accent-sage"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm text-charcoal flex justify-between mb-1">
                     <span>Size</span>
                     <span className="text-stone">{overlaySize}px</span>
                   </label>
@@ -588,6 +658,9 @@ export default function SimulatorTool() {
                   onClick={() => {
                     setOverlayPos({ x: 50, y: 50 });
                     setOverlayRotation(0);
+                    setOverlayTiltX(0);
+                    setOverlayTiltY(0);
+                    setOverlayDisplacement(0);
                     setOverlayBlur(0.5);
                     setOverlayOpacity(0.75);
                   }}
