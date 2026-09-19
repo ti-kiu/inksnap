@@ -3,7 +3,7 @@ import '@/app/tattoo-ideas/pseo.css';
 import content from '@/data/pseo-content.json';
 import PseoPreviewButtons from '@/components/PseoPreviewButtons';
 
-const styleSlugs = ["anime", "blackwork", "fine-line", "floral", "geometric", "japanese", "minimalist", "neo-traditional", "ornamental", "realism", "script-lettering", "small-simple", "snake-dragon", "traditional", "tribal", "watercolor"];
+const styleSlugs = ["anime", "blackwork", "chinese-lattice", "dotwork", "fine-line", "flame", "floral", "geometric", "japanese", "minimalist", "neo-traditional", "ornamental", "realism", "sacred-geometry", "script-lettering", "small-simple", "snake-dragon", "traditional", "tribal", "watercolor"];
 
 interface PageProps {
   params: Promise<{ slug: string }>;
