@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import StencilTool from '@/components/StencilTool';
+import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
 export const metadata: Metadata = {
   title: 'Tattoo Stencil Generator — Free Online Tool | InkPreview',
@@ -20,18 +21,15 @@ export default function StencilGeneratorPage() {
       <StencilTool />
 
       {/* BEFORE/AFTER */}
-      <section className="max-w-5xl mx-auto px-6 py-12">
-        <h2 className="font-display text-display-md text-ink text-center mb-8">From Design to Stencil</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="text-center">
-            <img src="/images/tool-examples/stencil-before.webp" alt="Original tattoo design" className="w-full rounded-xl shadow-card" loading="lazy" width="600" height="750" />
-            <p className="text-stone text-sm mt-3">Before — full color design</p>
-          </div>
-          <div className="text-center">
-            <img src="/images/tool-examples/stencil-after.webp" alt="Clean stencil outline" className="w-full rounded-xl shadow-card" loading="lazy" width="600" height="750" />
-            <p className="text-sage-dark text-sm mt-3">After — transfer-ready stencil</p>
-          </div>
-        </div>
+      <section className="max-w-lg mx-auto px-6 py-12">
+        <h2 className="font-display text-display-md text-ink text-center mb-8">Drag to Compare</h2>
+        <BeforeAfterSlider
+          beforeSrc="/images/tool-examples/stencil-before.webp"
+          afterSrc="/images/tool-examples/stencil-after.webp"
+          beforeAlt="Original tattoo design"
+          afterAlt="Clean stencil outline"
+        />
+        <p className="text-center text-stone text-xs mt-3">← Original Design &nbsp;|&nbsp; Stencil Outline →</p>
       </section>
     </>
   );

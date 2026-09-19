@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import SimulatorTool from "@/components/SimulatorTool";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 export const metadata: Metadata = {
   title: "Tattoo Simulator — Virtual Tattoo Try On",
@@ -30,18 +31,15 @@ export default function TattooSimulator() {
       <SimulatorTool />
 
       {/* BEFORE/AFTER */}
-      <section className="max-w-5xl mx-auto px-6 py-12">
-        <h2 className="font-display text-display-md text-ink text-center mb-8">See the Difference</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="text-center">
-            <img src="/images/tool-examples/simulator-before.webp" alt="Before — clean skin" className="w-full rounded-xl shadow-card" loading="lazy" width="600" height="750" />
-            <p className="text-stone text-sm mt-3">Before — your photo</p>
-          </div>
-          <div className="text-center">
-            <img src="/images/tool-examples/simulator-after.webp" alt="After — tattoo preview on skin" className="w-full rounded-xl shadow-card" loading="lazy" width="600" height="750" />
-            <p className="text-sage-dark text-sm mt-3">After — AI tattoo preview</p>
-          </div>
-        </div>
+      <section className="max-w-lg mx-auto px-6 py-12">
+        <h2 className="font-display text-display-md text-ink text-center mb-8">Drag to Compare</h2>
+        <BeforeAfterSlider
+          beforeSrc="/images/tool-examples/simulator-before.webp"
+          afterSrc="/images/tool-examples/simulator-after.webp"
+          beforeAlt="Clean skin before tattoo"
+          afterAlt="AI tattoo preview on skin"
+        />
+        <p className="text-center text-stone text-xs mt-3">← Before &nbsp;|&nbsp; After →</p>
       </section>
 
       {/* HOW THE SIMULATOR WORKS */}

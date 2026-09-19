@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 export const metadata: Metadata = {
   title: "Tattoo Cover-up Design — Redesign Old Tattoos | InkPreview",
@@ -71,18 +72,15 @@ export default function CoverUpDesign() {
       </section>
 
       {/* BEFORE/AFTER */}
-      <section className="max-w-5xl mx-auto px-6 py-12">
-        <h2 className="font-display text-display-md text-ink text-center mb-8">Cover-up Transformation</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="text-center">
-            <img src="/images/tool-examples/coverup-before.webp" alt="Old unwanted tattoo" className="w-full rounded-xl shadow-card" loading="lazy" width="600" height="750" />
-            <p className="text-stone text-sm mt-3">Before — old tattoo</p>
-          </div>
-          <div className="text-center">
-            <img src="/images/tool-examples/coverup-after.webp" alt="New cover-up design" className="w-full rounded-xl shadow-card" loading="lazy" width="600" height="750" />
-            <p className="text-sage-dark text-sm mt-3">After — cover-up design</p>
-          </div>
-        </div>
+      <section className="max-w-lg mx-auto px-6 py-12">
+        <h2 className="font-display text-display-md text-ink text-center mb-8">Drag to Compare</h2>
+        <BeforeAfterSlider
+          beforeSrc="/images/tool-examples/coverup-before.webp"
+          afterSrc="/images/tool-examples/coverup-after.webp"
+          beforeAlt="Old unwanted tattoo"
+          afterAlt="New cover-up design"
+        />
+        <p className="text-center text-stone text-xs mt-3">← Old Tattoo &nbsp;|&nbsp; Cover-up Design →</p>
       </section>
 
       {/* COMMON SCENARIOS */}
