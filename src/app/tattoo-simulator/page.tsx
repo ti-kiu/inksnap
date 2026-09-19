@@ -59,7 +59,7 @@ export default function TattooSimulator() {
             <div>
               <h3 className="font-display text-lg text-ink mb-2">Step 2 — Choose Your Design</h3>
               <p className="text-stone text-sm leading-relaxed">
-                Browse 5,000+ styles (geometric, Japanese, minimalist, realism, watercolor, blackwork),
+                Browse 20+ styles (geometric, Japanese, minimalist, realism, watercolor, blackwork),
                 upload a reference image, or describe what you want and let AI generate it.
               </p>
             </div>

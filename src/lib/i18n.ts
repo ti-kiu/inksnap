@@ -13,7 +13,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'hero.title': 'Tattoo Simulator & Try On',
     'hero.subtitle': 'Preview tattoo designs on your body with AI before you commit. Free, instant, and realistic.',
     'hero.cta': 'Try Free — No Signup',
-    'hero.trusted': 'Trusted by 10,000+ tattoo enthusiasts',
+    'hero.trusted': 'Free AI tattoo preview — no account needed',
 
     // Simulator
     'sim.title': 'AI Tattoo Simulator',
@@ -82,7 +82,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'hero.title': 'Simulador de Tatuagem com IA',
     'hero.subtitle': 'Visualize designs de tatuagem no seu corpo com IA antes de tatuar. Grátis, instantâneo e realista.',
     'hero.cta': 'Experimentar Grátis — Sem Cadastro',
-    'hero.trusted': 'Usado por mais de 10.000 entusiastas de tatuagem',
+    'hero.trusted': 'Previsualizacao de tatuagem IA gratuita — sem conta',
 
     'sim.title': 'Simulador de Tatuagem IA',
     'sim.upload': 'Envie Sua Foto',
@@ -142,7 +142,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'hero.title': 'Tattoo-Simulator & Anprobe',
     'hero.subtitle': 'Vorschau von Tattoo-Designs auf Ihrem Körper mit KI, bevor Sie sich entscheiden. Kostenlos, sofort und realistisch.',
     'hero.cta': 'Kostenlos Testen — Keine Anmeldung',
-    'hero.trusted': 'Vertraut von über 10.000 Tattoo-Begeisterten',
+    'hero.trusted': 'Kostenlose KI-Tattoo-Vorschau — kein Konto benotigt',
 
     'sim.title': 'KI Tattoo-Simulator',
     'sim.upload': 'Foto Hochladen',
@@ -202,7 +202,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'hero.title': 'Simulatore di Tatuaggi con IA',
     'hero.subtitle': 'Anteprima dei tatuaggi sul tuo corpo con IA prima di decidere. Gratuito, istantaneo e realistico.',
     'hero.cta': 'Prova Gratis — Nessuna Registrazione',
-    'hero.trusted': 'Usato da oltre 10.000 appassionati di tatuaggi',
+    'hero.trusted': 'Anteprima tatuaggio IA gratuita — nessun account richiesto',
 
     'sim.title': 'Simulatore Tatuaggi IA',
     'sim.upload': 'Carica la Tua Foto',

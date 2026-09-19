@@ -36,8 +36,8 @@ export default function Footer() {
           Disclaimer: InkPreview provides AI-generated visual previews for reference only. Results may
           vary from actual tattoos. InkPreview does not provide tattooing services, medical advice, or
           professional design services. Always consult a licensed tattoo artist for final designs and
-          application. You must be 18+ to use this service (or the age of majority in your
-          jurisdiction).
+          application. You must be at least 13 years old to use this service. You must be 18+ to purchase
+          any paid plan (or the age of majority in your jurisdiction).
         </p>
       </div>
     </footer>

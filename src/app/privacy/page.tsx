@@ -35,7 +35,7 @@ export default function PrivacyPolicy() {
           <h3 className="font-bold text-ink text-sm mt-4 mb-2">Automatically Collected</h3>
           <ul className="list-disc list-inside text-stone text-sm space-y-1">
             <li>IP address (for rate limiting and abuse prevention)</li>
-            <li>Device fingerprint (for multi-account abuse prevention)</li>
+            <li>IP address (hashed, for rate limiting and abuse prevention only)</li>
             <li>Page views (via Cloudflare Web Analytics, no PII collected)</li>
             <li>Session cookies (for login state)</li>
           </ul>

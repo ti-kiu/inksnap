@@ -4,6 +4,7 @@ import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
 
 const dmSerif = DM_Serif_Display({
   weight: "400",
@@ -73,6 +74,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   );

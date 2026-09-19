@@ -71,11 +71,6 @@ export default function LandingPage() {
       { '@type': 'Offer', 'price': '9.99', 'priceCurrency': 'USD', 'name': 'Pro', 'billingIncrement': 'P1M' },
       { '@type': 'Offer', 'price': '29.99', 'priceCurrency': 'USD', 'name': 'Studio', 'billingIncrement': 'P1M' }
     ],
-    'aggregateRating': {
-      '@type': 'AggregateRating',
-      'ratingValue': '4.8',
-      'ratingCount': '127'
-    }
   };
 
   const orgJsonLd = {
@@ -160,8 +155,7 @@ export default function LandingPage() {
                 InkPreview is a free AI tattoo simulator that helps you visualize tattoo designs on your
                 body before committing. Whether you&apos;re considering a small minimalist tattoo on your
                 wrist, a full sleeve design, or a meaningful cover-up for an existing tattoo, our AI
-                engine generates realistic previews in seconds. Used by over 10,000 tattoo enthusiasts
-                worldwide.
+                engine generates realistic previews in seconds. Try it free — no account needed.
               </p>
             </div>
             <div className="relative">
@@ -209,7 +203,7 @@ export default function LandingPage() {
               </div>
               <h3 className="font-display text-xl text-ink mb-2">2. Choose or Generate a Design</h3>
               <p className="text-stone text-sm leading-relaxed">
-                Pick from 5,000+ styles or describe what you want. AI builds it in seconds.
+                Pick from 20+ styles or describe what you want. AI builds it in seconds.
               </p>
             </div>
             <div className="text-center">
