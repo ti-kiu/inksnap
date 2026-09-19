@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import '@/app/tattoo-ideas/pseo.css';
 import content from '@/data/pseo-content.json';
+import PseoPreviewButtons from '@/components/PseoPreviewButtons';
 
 const styleSlugs = ["anime", "blackwork", "fine-line", "floral", "geometric", "japanese", "minimalist", "neo-traditional", "ornamental", "realism", "script-lettering", "small-simple", "snake-dragon", "traditional", "tribal", "watercolor"];
 
@@ -48,6 +49,7 @@ export default async function PseoStylePage({ params }: PageProps) {
         className="pseo-wrap max-w-[1200px] mx-auto px-6"
         dangerouslySetInnerHTML={ { __html: page.bodyHtml } }
       />
+      <PseoPreviewButtons />
     </>
   );
 }

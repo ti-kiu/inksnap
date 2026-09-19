@@ -46,6 +46,13 @@ export default function SimulatorTool() {
         console.error('Auth/usage failed:', e);
       }
     })();
+
+    // Check for ?design= param (from PSEO gallery)
+    const params = new URLSearchParams(window.location.search);
+    const designParam = params.get('design');
+    if (designParam) {
+      setResultUrl(designParam);
+    }
   }, []);
 
   // Handle photo upload

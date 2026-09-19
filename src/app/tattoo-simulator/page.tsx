@@ -51,40 +51,35 @@ export default function TattooSimulator() {
               </p>
             </div>
             <div>
-              <h3 className="font-display text-lg text-ink mb-2">Step 3 — Preview &amp; Adjust</h3>
+              <h3 className="font-display text-lg text-ink mb-2">Step 3 — Preview & Adjust</h3>
               <p className="text-stone text-sm leading-relaxed">
-                Drag to reposition. Pinch or scroll to resize. Rotate to match body contour. Compare
-                up to 4 placements side by side.
+                Drag, resize, and rotate the tattoo on your photo. Adjust opacity and blend mode until it
+                looks natural. Download or share with your artist.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* USE CASES */}
+      {/* WHY USE A SIMULATOR */}
       <section className="py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="font-display text-display-md text-ink text-center mb-12">
-            For First-Timers, Collectors &amp; Artists
+          <h2 className="font-display text-display-md text-ink text-center mb-10">
+            Why Preview Before You Ink?
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-warm-white rounded-xl p-6 shadow-soft">
-              <h3 className="font-display text-lg text-ink mb-2">For First-Timers</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-warm-white rounded-xl p-6">
+              <h3 className="font-display text-lg text-ink mb-2">Avoid Tattoo Regret</h3>
               <p className="text-stone text-sm leading-relaxed">
-                Not sure if a forearm piece is right for you? Try it on 6 different spots before you
-                walk into a shop.
+                Nearly 25% of people with tattoos regret at least one. A preview helps you see the design
+                at the right size and placement before committing.
               </p>
             </div>
-            <div className="bg-warm-white rounded-xl p-6 shadow-soft">
-              <h3 className="font-display text-lg text-ink mb-2">For Collectors</h3>
+            <div className="bg-warm-white rounded-xl p-6">
+              <h3 className="font-display text-lg text-ink mb-2">Communicate with Your Artist</h3>
               <p className="text-stone text-sm leading-relaxed">
-                Planning your next piece? See how a new design fits with existing tattoos.
-              </p>
-            </div>
-            <div className="bg-warm-white rounded-xl p-6 shadow-soft">
-              <h3 className="font-display text-lg text-ink mb-2">For Artists</h3>
-              <p className="text-stone text-sm leading-relaxed">
-                Show clients a realistic mockup. They approve faster. Fewer re-draws.
+                Show your tattoo artist exactly what you want — size, placement, and style. A visual
+                reference beats a verbal description every time.
               </p>
             </div>
           </div>
@@ -93,20 +88,18 @@ export default function TattooSimulator() {
 
       {/* CTA */}
       <section className="bg-warm-white py-16 md:py-20 text-center">
-        <div className="max-w-2xl mx-auto px-6">
-          <h2 className="font-display text-display-md text-ink mb-4">
-            Your Body. Your Design. See It First.
-          </h2>
-          <Link
-            href="/tattoo-simulator"
-            className="inline-flex items-center justify-center px-8 py-4 bg-sage text-white rounded-md text-lg font-medium hover:bg-sage-dark transition-all hover:shadow-card"
-          >
-            Upload a Photo and Start
-          </Link>
-          <p className="text-xs text-stone mt-4">
-            AI-generated reference. Consult a professional tattoo artist before inking.
-          </p>
-        </div>
+        <h2 className="font-display text-display-md text-ink mb-4">
+          Ready to See Your Tattoo?
+        </h2>
+        <p className="text-stone max-w-lg mx-auto mb-8">
+          Upload one photo and preview any design on your body. Free, no sign-up required.
+        </p>
+        <Link
+          href="/tattoo-simulator"
+          className="inline-flex items-center px-7 py-3.5 bg-sage text-white rounded-md text-base font-medium hover:bg-sage-dark transition-all"
+        >
+          Try the Simulator Free
+        </Link>
       </section>
     </>
   );

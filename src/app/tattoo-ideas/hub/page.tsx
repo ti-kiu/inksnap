@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import '@/app/tattoo-ideas/pseo.css';
 import content from '@/data/pseo-content.json';
+import PseoPreviewButtons from '@/components/PseoPreviewButtons';
 
 const page = content['hub'];
 
@@ -31,6 +32,7 @@ export default function TattooIdeasHub() {
         className="pseo-wrap max-w-[1200px] mx-auto px-6"
         dangerouslySetInnerHTML={ { __html: page.bodyHtml } }
       />
+      <PseoPreviewButtons />
     </>
   );
 }
