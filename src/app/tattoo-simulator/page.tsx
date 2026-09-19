@@ -39,7 +39,7 @@ export default function TattooSimulator() {
           beforeAlt="Clean skin before tattoo"
           afterAlt="AI tattoo preview on skin"
         />
-        <p className="text-center text-stone text-xs mt-3">← Before &nbsp;|&nbsp; After →</p>
+        <p className="text-center text-stone text-xs mt-3">← Clean Skin &nbsp;|&nbsp; Tattoo Preview →</p>
       </section>
 
       {/* HOW THE SIMULATOR WORKS */}
