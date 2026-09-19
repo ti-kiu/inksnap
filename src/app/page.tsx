@@ -1,3 +1,4 @@
+import HeroCarousel from "@/components/HeroCarousel";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -141,16 +142,7 @@ export default function LandingPage() {
               </p>
             </div>
             <div className="relative">
-              <div className="bg-warm-white rounded-xl shadow-card p-4 md:p-6">
-                <div className="aspect-[4/5] bg-sand rounded-lg flex items-center justify-center overflow-hidden">
-                  <img
-                    src="/hero-tattoo.jpg"
-                    alt="Realistic tattoo preview on arm - InkPreview AI tattoo simulator"
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                  />
-                </div>
-              </div>
+              <HeroCarousel />
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-sage-light/30 rounded-full -z-10" />
               <div className="absolute -top-4 -left-4 w-16 h-16 bg-terracotta-light/40 rounded-full -z-10" />
             </div>
