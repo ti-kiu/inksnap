@@ -87,6 +87,25 @@ export default function LandingPage() {
     'sameAs': []
   };
 
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    'name': 'InkPreview — AI Tattoo Simulator & Try On',
+    'description': 'See how a tattoo looks on your body before you commit. Free AI-powered tattoo preview tool.',
+    'url': 'https://inkpreview.co',
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'InkPreview',
+      'url': 'https://inkpreview.co'
+    },
+    'mainEntity': {
+      '@type': 'WebApplication',
+      'name': 'InkPreview Tattoo Simulator',
+      'applicationCategory': 'DesignApplication',
+      'operatingSystem': 'Web'
+    }
+  };
+
   return (
     <>
       <script
@@ -100,6 +119,10 @@ export default function LandingPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
       {/* HERO */}
       <section className="bg-gradient-to-b from-cream to-warm-white">
@@ -239,6 +262,46 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* TRUST & AUTHORITY */}
+      <section className="bg-warm-white section-padding py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="font-display text-display-md text-ink text-center mb-12">
+            Why Tattoo Preview Matters
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center">
+              <div className="text-3xl font-display text-sage mb-2">24%</div>
+              <p className="text-stone text-sm">of people with tattoos regret at least one, according to a <a href="https://www.pewresearch.org/short-reads/2023/08/15/about-a-third-of-us-adults-say-they-have-a-tattoo/" target="_blank" rel="noopener noreferrer" className="text-sage-dark underline">2023 Pew Research study</a>.</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-display text-sage mb-2">32%</div>
+              <p className="text-stone text-sm">of U.S. adults have at least one tattoo — up from 21% in 2012, per <a href="https://www.pewresearch.org/short-reads/2023/08/15/about-a-third-of-us-adults-say-they-have-a-tattoo/" target="_blank" rel="noopener noreferrer" className="text-sage-dark underline">Pew Research Center</a>.</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-display text-sage mb-2">10s</div>
+              <p className="text-stone text-sm">average preview time on InkPreview — see the design before you commit, reducing the chance of regret.</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl p-6 md:p-8 shadow-soft">
+            <h3 className="font-display text-lg text-ink mb-3">How We Help</h3>
+            <p className="text-stone text-sm leading-relaxed mb-4">
+              InkPreview was built to solve a simple problem: <strong className="text-charcoal">you can&apos;t undo a tattoo easily</strong>.
+              Traditional methods — verbal descriptions, Pinterest boards, printed stencils — leave too much to imagination.
+              Our AI engine renders realistic previews on your actual photo, accounting for skin tone, body curvature, and lighting.
+            </p>
+            <p className="text-stone text-sm leading-relaxed mb-4">
+              According to the <a href="https://www.aad.org/public/everyday-care/skin-care-secrets/tattoos/caring-for-tattooed-skin" target="_blank" rel="noopener noreferrer" className="text-sage-dark underline">American Academy of Dermatology</a>,
+              proper planning and placement are key factors in tattoo satisfaction. InkPreview helps you test placement
+              and size before sitting in the chair.
+            </p>
+            <p className="text-stone text-sm leading-relaxed">
+              Professional tattoo artists also use InkPreview as a consultation tool — showing clients realistic previews
+              reduces revision requests and improves client satisfaction.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ABOUT / SEO CONTENT */}
       <section className="section-padding py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-6">
@@ -345,6 +408,23 @@ export default function LandingPage() {
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ABOUT INKPREVIEW */}
+      <section className="section-padding py-12 md:py-16">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h2 className="font-display text-2xl text-ink mb-4">About InkPreview</h2>
+          <p className="text-stone text-sm leading-relaxed mb-4">
+            InkPreview is an independent tool built by tattoo enthusiasts and AI engineers.
+            We are not a tattoo studio and do not provide tattooing services. Our mission is to help
+            you make better decisions about body art by showing realistic previews before you commit.
+          </p>
+          <p className="text-stone text-sm leading-relaxed">
+            Our AI models are trained on diverse skin tones and body types. We work with professional
+            tattoo artists to validate our preview accuracy. For tattoo-specific advice — pain management,
+            aftercare, ink allergies — always consult a licensed tattoo artist or dermatologist.
+          </p>
         </div>
       </section>
 
