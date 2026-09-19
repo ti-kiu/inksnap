@@ -29,6 +29,21 @@ export default function TattooSimulator() {
       {/* INTERACTIVE TOOL */}
       <SimulatorTool />
 
+      {/* BEFORE/AFTER */}
+      <section className="max-w-5xl mx-auto px-6 py-12">
+        <h2 className="font-display text-display-md text-ink text-center mb-8">See the Difference</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="text-center">
+            <img src="/images/tool-examples/simulator-before.webp" alt="Before — clean skin" className="w-full rounded-xl shadow-card" loading="lazy" width="600" height="750" />
+            <p className="text-stone text-sm mt-3">Before — your photo</p>
+          </div>
+          <div className="text-center">
+            <img src="/images/tool-examples/simulator-after.webp" alt="After — tattoo preview on skin" className="w-full rounded-xl shadow-card" loading="lazy" width="600" height="750" />
+            <p className="text-sage-dark text-sm mt-3">After — AI tattoo preview</p>
+          </div>
+        </div>
+      </section>
+
       {/* HOW THE SIMULATOR WORKS */}
       <section className="bg-warm-white py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-6">
