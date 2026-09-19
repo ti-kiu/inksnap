@@ -34,8 +34,8 @@ export default function TattooSimulator() {
       <section className="max-w-lg mx-auto px-6 py-12">
         <h2 className="font-display text-display-md text-ink text-center mb-8">Drag to Compare</h2>
         <BeforeAfterSlider
-          beforeSrc="/images/tool-examples/simulator-before.webp"
-          afterSrc="/images/tool-examples/simulator-after.webp"
+          beforeSrc="/images/tool-examples/simulator-page-before.webp"
+          afterSrc="/images/tool-examples/simulator-page-after.webp"
           beforeAlt="Clean skin before tattoo"
           afterAlt="AI tattoo preview on skin"
         />
