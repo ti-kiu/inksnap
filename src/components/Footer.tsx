@@ -29,6 +29,12 @@ export default function Footer() {
           <Link href="/pricing" className="hover:text-charcoal transition">
             Pricing
           </Link>
+          <Link href="/about" className="hover:text-charcoal transition">
+            About
+          </Link>
+          <Link href="/contact" className="hover:text-charcoal transition">
+            Contact
+          </Link>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-6 mt-6 pt-6 border-t border-sand">
