@@ -4,7 +4,7 @@ import StencilTool from '@/components/StencilTool';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
 export const metadata: Metadata = {
-  title: 'Tattoo Stencil Generator — Free Online Tool | InkPreview',
+  title: 'Tattoo Stencil Generator — Free Online Tool',
   description: 'Convert any tattoo design into a clean stencil outline. Free online tool for tattoo artists. Upload an image, adjust settings, download transfer-ready stencil.',
   alternates: { canonical: '/tattoo-stencil-generator' },
 };

@@ -4,7 +4,7 @@ import SimulatorTool from "@/components/SimulatorTool";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 export const metadata: Metadata = {
-  title: "Tattoo Simulator — Virtual Tattoo Try On | InkPreview",
+  title: "Tattoo Simulator — Virtual Tattoo Try On",
   description:
     "Upload your photo and see how any tattoo looks on your body. Free virtual tattoo try on with AI. Adjust size, placement, and style in seconds.",
   alternates: { canonical: "/tattoo-simulator" },

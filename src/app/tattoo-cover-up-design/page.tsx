@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 export const metadata: Metadata = {
-  title: "Tattoo Cover-up Design — Redesign Old Tattoos | InkPreview",
+  title: "Tattoo Cover-up Design — Redesign Old Tattoos",
   description:
     "Upload a photo of your existing tattoo. InkPreview suggests cover-up designs that work with your current ink. See the result before you book.",
   alternates: { canonical: "/tattoo-cover-up-design" },

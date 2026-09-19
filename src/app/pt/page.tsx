@@ -5,7 +5,7 @@ import { t, Locale } from '@/lib/i18n';
 const locale: Locale = 'pt';
 
 export const metadata: Metadata = {
-  title: 'Simulador de Tatuagem com IA — Experimente Grátis | InkPreview',
+  title: 'Simulador de Tatuagem com IA — Experimente Grátis',
   description: 'Visualize designs de tatuagem no seu corpo com IA. Grátis, instantâneo e realista. Mais de 50 estilos disponíveis.',
   alternates: {
     canonical: 'https://inkpreview.co/pt',

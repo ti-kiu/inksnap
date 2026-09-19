@@ -5,7 +5,7 @@ import { t, Locale } from '@/lib/i18n';
 const locale: Locale = 'de';
 
 export const metadata: Metadata = {
-  title: 'Tattoo-Simulator mit KI — Kostenlos Testen | InkPreview',
+  title: 'Tattoo-Simulator mit KI — Kostenlos Testen',
   description: 'Vorschau von Tattoo-Designs auf Ihrem Körper mit KI. Kostenlos, sofort und realistisch. Über 50 Stile verfügbar.',
   alternates: {
     canonical: 'https://inkpreview.co/de',

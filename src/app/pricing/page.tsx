@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "InkPreview Pricing — Free, Pro & Studio Plans",
+  title: "Pricing — Free, Pro & Studio Plans",
   description:
     "InkPreview pricing: Free plan with 3 daily images. Pro at $9.99/mo for 300 images. Studio at $29.99/mo for 4K, batch mode, and commercial license. Compare plans.",
   alternates: { canonical: "/pricing" },
