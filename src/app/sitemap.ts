@@ -3,6 +3,7 @@ import content from "@/data/pseo-content.json";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://inkpreview.co";
+  const locales = ["pt", "de", "it"];
 
   const staticPages = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1.0 },
@@ -17,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/tattoo-ideas/hub`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
   ];
 
-  // PSEO style pages (16) + placement pages (8) from new generator
+  // PSEO style pages (16) + placement pages (8) — English
   const pseoPages = Object.keys(content)
     .filter((slug) => slug !== "hub")
     .map((slug) => ({
@@ -29,5 +30,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: slug.startsWith("placement-") ? 0.7 : 0.8,
     }));
 
-  return [...staticPages, ...pseoPages];
+  // Multilingual PSEO pages (PT, DE, IT)
+  const multilingualPages: MetadataRoute.Sitemap = [];
+  for (const locale of locales) {
+    // Hub
+    multilingualPages.push({
+      url: `${baseUrl}/${locale}/tattoo-ideas/hub`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    });
+    // Style + placement pages
+    for (const slug of Object.keys(content)) {
+      if (slug === "hub") continue;
+      const url = slug.startsWith("placement-")
+        ? `${baseUrl}/${locale}/tattoo-ideas/placement/${slug.replace("placement-", "")}`
+        : `${baseUrl}/${locale}/tattoo-ideas/${slug}`;
+      multilingualPages.push({
+        url,
+        lastModified: new Date(),
+        changeFrequency: "weekly" as const,
+        priority: slug.startsWith("placement-") ? 0.5 : 0.6,
+      });
+    }
+  }
+
+  return [...staticPages, ...pseoPages, ...multilingualPages];
 }
