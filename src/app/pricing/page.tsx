@@ -196,6 +196,14 @@ export default function PricingPage() {
             7-day money-back guarantee on Pro and Studio. No questions asked.
           </div>
         </div>
+
+        {/* Auto-renewal notice */}
+        <div className="text-center mt-4">
+          <p className="text-xs text-stone max-w-lg mx-auto">
+            <strong>Auto-renewal:</strong> Pro and Studio subscriptions renew automatically each month (or year for annual plans).
+            You can cancel anytime from your account settings before the next billing date. No contracts, no cancellation fees.
+          </p>
+        </div>
       </section>
 
       {/* COMPARISON TABLE */}
